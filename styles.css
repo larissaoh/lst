@@ -29,9 +29,6 @@
     --flag-soft:#FBE4E2;
     --good:#2E7D5B;
     --good-soft:#E3F1EA;
-    --accent:#D42A2A;
-    --accent-dark:#A31F1F;
-    --accent-soft:#FBE4E2;
     --shadow-lg:0 32px 90px rgba(22,26,34,.16);
     --shadow-md:0 18px 48px rgba(22,26,34,.12);
     --shadow-sm:0 8px 24px rgba(22,26,34,.08);
@@ -60,30 +57,44 @@
   body.page-public .nav-link{font-size:14px;font-weight:700;color:var(--muted);text-decoration:none}
   body.page-public .nav-link:hover{color:var(--ink)}
 
-  /* buttons — the one button component every page shares */
+  /* buttons — three tiers, shared by every page: primary (solid indigo),
+     outline (bordered), plain (text-only). Red stays reserved for the
+     flagged-issue UI and never appears on a button. */
   body.page-public .button{min-height:48px;display:inline-flex;align-items:center;justify-content:center;gap:9px;padding:0 20px;border:1px solid transparent;border-radius:13px;text-decoration:none;font-size:14px;font-weight:800;cursor:pointer;transition:transform .16s ease,background .16s ease,border-color .16s ease,box-shadow .16s ease}
   body.page-public .button:hover{transform:translateY(-1px)}
   body.page-public .button-primary{background:var(--brand);color:#fff;box-shadow:0 8px 22px rgba(35,49,54,.18)}
   body.page-public .button-primary:hover{background:var(--brand-dark)}
-  body.page-public .button-secondary{background:rgba(255,255,255,.8);border-color:#c3ccca;color:var(--ink)}
-  body.page-public .button-secondary:hover{background:#fff;border-color:#aebbb7}
   body.page-public .button-outline{background:#fff;border:1px solid #cbd3d1;color:var(--ink)}
   body.page-public .button-outline:hover{background:#F5F4F1}
-  body.page-public .button-accent{background:var(--accent);color:#fff;box-shadow:0 8px 22px rgba(224,122,95,.22)}
-  body.page-public .button-accent:hover{background:var(--accent-dark)}
+  body.page-public .button-plain{min-height:auto;padding:0;border:0;background:transparent;color:var(--brand-dark);text-decoration:underline;text-underline-offset:3px;text-decoration-thickness:1.5px}
+  body.page-public .button-plain:hover{transform:none;color:var(--ink)}
 
   body.page-public .eyebrow{margin:0 0 16px;color:var(--brand-dark);font-size:12px;font-weight:800;letter-spacing:.14em;text-transform:uppercase}
 
-  /* hero — shared by index.html and expert-service.html */
-  body.page-public .hero{max-width:720px;margin:0 auto;padding:92px 28px 80px}
+  /* hero */
+  body.page-public .hero{max-width:900px;margin:0 auto;padding:88px 28px 0;text-align:center}
   body.page-public h1, body.page-public h2, body.page-public h3, body.page-public p{overflow-wrap:break-word}
-  body.page-public h1{max-width:640px;margin:0;font-size:clamp(38px,5.6vw,68px);font-weight:800;line-height:1.08;letter-spacing:-.04em;color:var(--ink)}
-  body.page-public .hero-copy{max-width:560px;margin:24px 0 0;color:var(--muted);font-size:19px;line-height:1.68;letter-spacing:-.012em}
-  body.page-public .hero-actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:32px}
+  body.page-public h1{max-width:19ch;margin:0 auto;font-size:clamp(38px,5.6vw,66px);font-weight:800;line-height:1.08;letter-spacing:-.04em;color:var(--ink);text-wrap:balance}
+  body.page-public .hero-copy{max-width:560px;margin:24px auto 0;color:var(--muted);font-size:19px;line-height:1.68;letter-spacing:-.012em}
+  body.page-public .hero-actions{display:flex;flex-wrap:wrap;justify-content:center;gap:14px;margin-top:34px}
   body.page-public .hero-actions .button{min-height:52px;padding:0 23px;font-size:15px}
-  body.page-public .hero-proof{display:flex;flex-wrap:wrap;gap:10px 20px;margin-top:24px;color:var(--muted-2);font-size:13px;font-weight:700}
+  body.page-public .hero-proof{display:flex;flex-wrap:wrap;justify-content:center;gap:10px 22px;margin-top:26px;color:var(--muted-2);font-size:13px;font-weight:700}
   body.page-public .hero-proof span{display:inline-flex;align-items:center;gap:7px}
   body.page-public .hero-proof svg{width:16px;height:16px;fill:none;stroke:var(--brand);stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
+
+  /* hero photo gallery — Airbnb-style 5-tile grid, placeholder frames
+     until real listing photography (Unsplash or pilot property) is in */
+  body.page-public .hero-gallery{max-width:1040px;margin:52px auto 0;padding:0 28px}
+  body.page-public .hero-gallery-grid{display:grid;grid-template-columns:1.6fr 1fr 1fr;grid-template-rows:1fr 1fr;gap:6px;height:420px;border-radius:20px;overflow:hidden}
+  body.page-public .hero-gallery-grid .photo-placeholder:first-child{grid-row:1/3}
+  body.page-public .photo-placeholder{position:relative;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;background:var(--surface-2);border:1.5px dashed var(--muted-2)}
+  body.page-public .photo-placeholder svg{width:26px;height:26px;stroke:var(--muted-2);fill:none;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}
+  body.page-public .photo-placeholder span{color:var(--muted);font-size:11.5px;font-weight:700;letter-spacing:.01em}
+  body.page-public .hero-gallery-note{margin:14px 0 0;color:var(--muted-2);font-size:12.5px;text-align:center}
+  @media(max-width:700px){
+    body.page-public .hero-gallery-grid{grid-template-columns:1fr 1fr;grid-template-rows:repeat(3,140px);height:auto}
+    body.page-public .hero-gallery-grid .photo-placeholder:first-child{grid-row:1/2;grid-column:1/3}
+  }
 
   /* section shell */
   body.page-public .section{max-width:var(--max);margin:0 auto;padding:88px 28px 96px}
@@ -147,11 +158,12 @@
     body.page-public .nav-link{font-size:12.5px}
     body.page-public .brand-product{display:none}
     body.page-public .button{min-height:44px}
-    body.page-public .hero{padding:64px 20px 56px}
+    body.page-public .hero{padding:56px 20px 0}
     body.page-public h1{font-size:36px}
     body.page-public .hero-copy{font-size:17px}
     body.page-public .hero-actions{display:grid;grid-template-columns:1fr}
-    body.page-public .hero-actions .button{width:100%}
+    body.page-public .hero-actions .button:not(.button-plain){width:100%}
+    body.page-public .hero-gallery{margin-top:40px}
     body.page-public .section{padding:64px 20px 76px}
     body.page-public .section-head{margin-bottom:36px}
     body.page-public .section-head>p:not(.eyebrow){font-size:16px}
@@ -161,7 +173,7 @@
     body.page-public .form-card{padding:26px}
   }
   @media(prefers-reduced-motion:reduce){html:has(body.page-public){scroll-behavior:auto}body.page-public *, body.page-public *::before, body.page-public *::after{transition:none!important;animation:none!important}}
-  @media(prefers-contrast:more){body.page-public{--muted:#445258;--muted-2:#536167}body.page-public .button-secondary{border-width:2px}}
+  @media(prefers-contrast:more){body.page-public{--muted:#445258;--muted-2:#536167}body.page-public .button-outline{border-width:2px}}
 
 /* ==================== index.html specific ==================== */
 
@@ -174,8 +186,7 @@
   body.page-public .listing-mock-dots span{width:7px;height:7px;border-radius:50%;background:var(--line);border:1px solid var(--muted-2)}
   body.page-public .listing-mock-url{justify-self:center;padding:4px 14px;border-radius:6px;background:var(--surface);border:1px solid var(--line);color:var(--muted);font-family:"IBM Plex Mono",monospace;font-size:10.5px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:220px}
   body.page-public .listing-mock-body{padding:26px 26px 30px}
-  body.page-public .listing-photo{position:relative;height:260px;margin-bottom:22px;border-radius:14px;overflow:hidden;background:linear-gradient(155deg,var(--brand-soft),#fff 60%)}
-  body.page-public .listing-photo svg{position:absolute;inset:0;width:100%;height:100%}
+  body.page-public .listing-photo{position:relative;height:260px;margin-bottom:22px;border-radius:14px}
   body.page-public .listing-title{display:flex;align-items:flex-start;gap:10px;margin:0 0 8px;font-size:20px;font-weight:800;letter-spacing:-.015em;line-height:1.3}
   body.page-public .listing-meta{margin:0 0 14px;color:var(--muted);font-size:13.5px}
   body.page-public .listing-desc{position:relative;margin:0;padding-right:26px;color:var(--ink-2);font-size:14.5px;line-height:1.7}
@@ -229,6 +240,12 @@
   body.page-public .deliverable-finding-tag{display:block;margin-bottom:5px;font-family:"IBM Plex Mono",monospace;font-size:10px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--muted-2)}
   body.page-public .deliverable-finding h4{margin:0 0 6px;font-size:14.5px;font-weight:700;letter-spacing:-.01em}
   body.page-public .deliverable-finding p{margin:0;color:var(--ink-2);font-size:13px;line-height:1.6}
+
+  /* credibility strip — ported over from the retired expert-service.html */
+  body.page-public .credibility-strip{max-width:var(--max);margin:0 auto;padding:0 28px 8px;text-align:center}
+  body.page-public .credibility-strip p{margin:0 auto;max-width:700px;color:var(--muted);font-size:14px;line-height:1.65}
+  body.page-public .credibility-strip strong{color:var(--ink)}
+  body.page-public .credibility-tags{margin-top:10px;font-size:12.5px;color:var(--muted-2);font-weight:600}
 
   /* how it works: vertical flow, step 2 (human) visually emphasized */
   body.page-public .flow{position:relative;max-width:640px;margin:48px auto 0}
@@ -286,24 +303,6 @@
   body.page-public .tier-toggle input:focus-visible + label{outline:3px solid rgba(80,109,121,.35);outline-offset:1px}
   body.page-public #paid-fields{margin-top:16px}
   body.page-public #paid-fields .field:first-of-type{margin-top:0}
-
-/* ==================== expert-service.html specific ==================== */
-
-  body.page-public .mode-bar{background:var(--brand-soft);border-bottom:1px solid rgba(80,109,121,.16);text-align:center;padding:11px 20px;font-size:13px;font-weight:700;color:var(--brand-dark)}
-  body.page-public .mode-bar a{color:var(--brand-dark);text-decoration:underline;text-underline-offset:2px}
-
-  body.page-public .credibility-strip{max-width:var(--max);margin:0 auto;padding:0 28px 8px;text-align:center}
-  body.page-public .credibility-strip p{margin:0 auto;max-width:700px;color:var(--muted);font-size:14px;line-height:1.65}
-  body.page-public .credibility-strip strong{color:var(--ink)}
-  body.page-public .credibility-tags{margin-top:10px;font-size:12.5px;color:var(--muted-2);font-weight:600}
-
-  body.page-public .inquiry-wrap{display:grid;grid-template-columns:.8fr 1.2fr;gap:66px;align-items:start;max-width:var(--max);margin:0 auto}
-  body.page-public .expert-small-lead{font-size:16px}
-  body.page-public .optional-note{font-weight:500;color:var(--muted-2)}
-
-  @media(max-width:900px){
-    body.page-public .inquiry-wrap{grid-template-columns:1fr}
-  }
 
 /* ==================== service-thanks.html specific ==================== */
 
