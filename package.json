@@ -1,0 +1,9 @@
+{
+  "name": "guest-guide-builder",
+  "private": true,
+  "version": "2.13.0",
+  "type": "module",
+  "dependencies": {
+    "@netlify/blobs": "^10.7.10"
+  }
+}

@@ -1,0 +1,2524 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Guest Welcome Guide Builder</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/><link href="styles.css?v=2.13.0" rel="stylesheet"/>
+
+</head>
+<body class="page-builder">
+<a class="skip-link" href="#builder-form">Skip to guide form</a>
+<div class="product-shell">
+<header class="app-header">
+<a aria-label="Guest Guide Builder home" class="brand-group" href="index.html">
+<span aria-hidden="true" class="brand-mark">GG</span>
+<span class="brand-name">Guest Guide</span>
+<span aria-hidden="true" class="brand-divider"></span>
+<span class="brand-product">Builder</span>
+</a>
+<div class="header-right">
+<div aria-label="Draft status" class="draft-meta">
+<svg aria-hidden="true" viewbox="0 0 24 24"><rect height="10" rx="2" width="14" x="5" y="10"></rect><path d="M8 10V7a4 4 0 0 1 8 0v3"></path></svg>
+<span class="draft-privacy">Private draft</span>
+<span aria-hidden="true" class="draft-separator">·</span>
+<p aria-live="polite" class="save-state" id="save-state">Autosave ready</p>
+</div>
+<div aria-label="Guide file actions" class="header-actions">
+<button aria-describedby="tip-restore" aria-label="Open a saved guide" class="header-action tooltip-trigger" id="restore-guide-button" type="button">
+<svg aria-hidden="true" viewbox="0 0 24 24"><path d="M4 7.5h6l2 2h8v9.5H4Z"></path><path d="M4 7.5V5h6l2 2"></path></svg>
+<span>Open</span><span class="tooltip" id="tip-restore" role="tooltip">Open a saved guide</span>
+</button>
+<input accept=".zip,.json,application/zip,application/json" id="restore-input" type="file"/>
+<button aria-describedby="tip-new" aria-label="Start a new guide" class="header-action tooltip-trigger" id="new-guide-button" type="button">
+<svg aria-hidden="true" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14"></path></svg>
+<span>New</span><span class="tooltip" id="tip-new" role="tooltip">Start a new guide</span>
+</button>
+</div>
+</div>
+</header>
+<div class="app">
+<main class="editor" id="builder-top">
+<div class="editor-inner">
+<section aria-labelledby="builder-title" class="editor-intro">
+<p class="eyebrow">Guest welcome guide</p>
+<h1 id="builder-title">Create a guide guests will love.</h1>
+<p class="lede">Share the details that help guests settle in, explore nearby, and feel at home. Your work saves as you go.</p>
+</section>
+<nav aria-label="Builder sections" class="section-nav">
+<a aria-current="step" class="active" data-section-link="" href="#section-style"><span>Style</span></a>
+<a data-section-link="" href="#section-property"><span>Property</span></a>
+<a data-section-link="" href="#section-stay"><span>Stay details</span></a>
+<a data-section-link="" href="#section-local"><span>Local guide</span></a>
+<a data-section-link="" href="#section-publish"><span>Publish</span></a>
+</nav>
+<form id="builder-form" novalidate="">
+<section class="form-section" data-builder-section="" id="section-style">
+<header class="form-section-header">
+<div class="section-heading-copy">
+<span class="section-step">1 of 5</span>
+<h2>Choose a style</h2>
+<p>Pick the look that best matches your space. Typography, color, and layout are included.</p>
+</div>
+</header>
+<div class="form-section-body">
+<fieldset>
+<legend class="sr-only">Guide style</legend>
+<div class="themes" id="theme-picker"></div>
+</fieldset>
+</div>
+</section>
+<section class="form-section" data-builder-section="" id="section-property">
+<header class="form-section-header">
+<div class="section-heading-copy">
+<span class="section-step">2 of 5</span>
+<h2>Welcome guests to your property</h2>
+<p>Add the name, host details, and photos guests will recognize when they arrive.</p>
+</div>
+</header>
+<div class="form-section-body">
+<div class="subsection">
+<h3 class="subsection-title">Property details</h3>
+<label for="property_name">Property name</label>
+<input autocomplete="organization" id="property_name" placeholder="Casa Marina" required="" type="text"/>
+<label for="tagline">Tagline</label>
+<input id="tagline" placeholder="A quiet coastal stay near the water" type="text"/>
+<div class="row2">
+<div>
+<label for="host_names">Host name(s)</label>
+<input autocomplete="name" id="host_names" placeholder="Sarah and Tom" type="text"/>
+</div>
+<div>
+<label for="host_response_note">Host availability</label>
+<input id="host_response_note" placeholder="We usually reply within an hour" type="text"/>
+</div>
+</div>
+</div>
+<fieldset class="subsection">
+<legend class="subsection-title">Property photos <span>Optimized automatically</span></legend>
+<p class="hint">Upload photos in any order. You can reorder them anytime. Photo descriptions are optional and help guests using screen readers.</p>
+<button class="dropzone" id="dropzone" type="button">
+<span class="upload-copy"><strong>Add property photos</strong><span>Drag and drop or browse from your device</span></span>
+<span class="upload-action">Choose files</span>
+</button>
+<input accept="image/jpeg,image/png,image/webp,image/avif,image/heic,image/heif" id="photo-input" multiple="" type="file"/>
+<div class="photo-summary">
+<div class="photo-summary-copy"><span id="photo-count">No photos yet</span><span id="photo-size"></span></div>
+<button aria-controls="photo-reorder-panel" aria-expanded="false" class="photo-reorder-button" hidden="" id="photo-reorder-toggle" type="button">
+<svg aria-hidden="true" viewbox="0 0 24 24"><path d="M8 6h12M8 12h12M8 18h12"></path><circle cx="4" cy="6" r="1"></circle><circle cx="4" cy="12" r="1"></circle><circle cx="4" cy="18" r="1"></circle></svg>
+<span>Reorder</span>
+</button>
+</div>
+<div class="photo-reorder-panel" hidden="" id="photo-reorder-panel">
+<div class="photo-reorder-head">
+<div><strong>Photo order</strong><p>Drag photos or use the arrow buttons. The first photo is the cover.</p></div>
+<button class="photo-reorder-done" id="photo-reorder-done" type="button">Done</button>
+</div>
+<div class="photo-reorder-list" id="photo-reorder-list"></div>
+</div>
+<div class="photo-list" id="photo-list"></div>
+</fieldset>
+</div>
+</section>
+<section class="form-section" data-builder-section="" id="section-stay">
+<header class="form-section-header">
+<div class="section-heading-copy">
+<span class="section-step">3 of 5</span>
+<h2>Make the stay feel effortless</h2>
+<p>Share the practical details guests need from check-in through check-out.</p>
+</div>
+</header>
+<div class="form-section-body">
+<div class="subsection">
+<h3 class="subsection-title">Wi-Fi</h3>
+<div class="row2">
+<div>
+<label for="wifi_name">Network name</label>
+<input autocomplete="off" id="wifi_name" type="text"/>
+</div>
+<div>
+<label for="wifi_password">Password</label>
+<input autocomplete="off" id="wifi_password" type="text"/>
+</div>
+</div>
+</div>
+<div class="subsection">
+<h3 class="subsection-title">Check-in</h3>
+<label for="checkin_time">Check-in time</label>
+<input id="checkin_time" placeholder="3:00 PM" type="text"/>
+<label for="checkin_steps">Arrival steps</label>
+<p class="hint">One step per line. Describe where to go and what to expect, but do not include an entry code or access credential.</p>
+<textarea aria-describedby="checkin_steps-error" id="checkin_steps" placeholder="Enter through the main entrance
+Your welcome book is on the kitchen counter"></textarea>
+<p class="field-error" hidden="" id="checkin_steps-error"></p>
+</div>
+<div class="subsection">
+<h3 class="subsection-title">Check-out</h3>
+<label for="checkout_time">Check-out time</label>
+<input id="checkout_time" placeholder="11:00 AM" type="text"/>
+<label for="checkout_steps">Check-out steps</label>
+<p class="hint">One step per line.</p>
+<textarea id="checkout_steps" placeholder="Start the dishwasher if used
+Take the trash out"></textarea>
+</div>
+<div class="subsection">
+<h3 class="subsection-title">House guidelines</h3>
+<label for="house_rules">Guidelines</label>
+<p class="hint">One guideline per line.</p>
+<textarea id="house_rules" placeholder="Quiet hours after 10 PM
+No smoking indoors"></textarea>
+</div>
+</div>
+</section>
+<section class="form-section" data-builder-section="" id="section-local">
+<header class="form-section-header">
+<div class="section-heading-copy">
+<span class="section-step">4 of 5</span>
+<h2>Share your local favorites</h2>
+<p>Add places you genuinely recommend, along with a map link and a helpful host tip.</p>
+</div>
+</header>
+<div class="form-section-body">
+<section aria-labelledby="food-heading" class="recommendation-group">
+<div class="recommendation-toolbar">
+<div>
+<h3 id="food-heading">Food &amp; drink</h3>
+<p>Restaurants, cafés, markets, and other spots guests will enjoy.</p>
+</div>
+<button class="add-place-button" data-add-recommendation="food" type="button"><svg aria-hidden="true" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14"></path></svg><span>Add a place</span></button>
+</div>
+<div class="recommendation-list" id="food-recommendations"></div>
+<p class="empty-recommendations" id="food-empty">Add your first food or drink recommendation.</p>
+</section>
+<section aria-labelledby="things-heading" class="recommendation-group">
+<div class="recommendation-toolbar">
+<div>
+<h3 id="things-heading">Things to do</h3>
+<p>Beaches, trails, shops, museums, and favorite local experiences.</p>
+</div>
+<button class="add-place-button" data-add-recommendation="things" type="button"><svg aria-hidden="true" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14"></path></svg><span>Add a place</span></button>
+</div>
+<div class="recommendation-list" id="things-recommendations"></div>
+<p class="empty-recommendations" id="things-empty">Add your first place to explore.</p>
+</section>
+<div class="local-tip-field">
+<label for="local_tip">A tip guests will appreciate</label>
+<input id="local_tip" placeholder="Parking is free after 6 PM on Marina Street" type="text"/>
+</div>
+</div>
+</section>
+<section class="form-section" data-builder-section="" id="section-publish">
+<header class="form-section-header">
+<div class="section-heading-copy">
+<span class="section-step">5 of 5</span>
+<h2>Review and create your guide</h2>
+<p>Preview everything, confirm it is safe to share, then create the files for your live guide.</p>
+</div>
+</header>
+<div class="form-section-body publish-body">
+<div class="publish-lead">
+<div>
+<strong>Your welcome guide is nearly ready.</strong>
+<p>Preview it as often as you like. Each time you create a downloadable guide, the price is <span id="inline-price">$5</span>.</p>
+</div>
+<span aria-label="$5 per guide download" class="download-price"><strong id="inline-price-display">$5</strong><small>per download</small></span>
+</div>
+<div class="review-link-group">
+<div class="field-heading">
+<strong>Make it easy to leave a review</strong>
+<span>Optional</span>
+</div>
+<p class="hint">Add your Airbnb review link so happy guests can find it after their stay.</p>
+<label class="sr-only" for="review_link">Airbnb review link</label>
+<input aria-describedby="review_link-error" id="review_link" inputmode="url" placeholder="Paste your Airbnb review link" type="text"/>
+<p class="field-error" hidden="" id="review_link-error"></p>
+</div>
+<div class="privacy-checkpoint">
+<svg aria-hidden="true" viewbox="0 0 24 24"><path d="M12 3 5 6v5c0 4.6 2.8 8.2 7 10 4.2-1.8 7-5.4 7-10V6l-7-3Z"></path><path d="m9 12 2 2 4-5"></path></svg>
+<div>
+<strong>Keep your guide safe to share</strong>
+<p>Anyone with the link can open it. Keep door, lockbox, gate, and alarm codes in Airbnb’s private messages.</p>
+<div class="check-row privacy-confirmation">
+<input aria-describedby="safety-action-note" aria-required="true" id="public_acknowledgement" required="" type="checkbox"/>
+<label for="public_acknowledgement">I confirm this guide does not include entry codes or access credentials.</label>
+</div>
+<p class="safety-action-note" id="safety-action-note">Confirm this before continuing to payment.</p>
+</div>
+</div>
+<details class="visibility-options">
+<summary>Optional search setting</summary>
+<div class="check-row">
+<input id="allow_indexing" type="checkbox"/>
+<label for="allow_indexing">Allow this guide to appear in search results. Leave this off if you only want guests with the link to find it.</label>
+</div>
+</details>
+<div class="error-summary" hidden="" id="error-summary" role="alert">
+<strong>A few details need your attention:</strong>
+<ul id="error-list"></ul>
+</div>
+<div class="cta-row publish-actions">
+<button class="secondary button-with-icon" id="full-preview-button" type="button"><svg aria-hidden="true" viewbox="0 0 24 24"><path d="M2.5 12s3.5-6 9.5-6 9.5 6 9.5 6-3.5 6-9.5 6-9.5-6-9.5-6Z"></path><circle cx="12" cy="12" r="2.5"></circle></svg><span>Preview guide</span></button>
+<button aria-describedby="safety-action-note price-note" class="primary" disabled="" id="generate-button" type="submit">Create guide files · <span id="cta-price">$5</span></button>
+</div>
+<p class="price-note" id="price-note">Preview and edit for free. $5 includes this guide and one updated download within 30 days.</p>
+<p aria-atomic="true" aria-live="polite" class="sr-only" id="status"></p>
+</div>
+</section>
+</form>
+</div>
+</main>
+<aside aria-label="Live guide preview" class="preview-panel">
+<div class="preview-toolbar">
+<div class="preview-title"><span class="preview-kicker">Preview</span><strong>Your guest guide</strong></div>
+<div aria-label="Preview size" class="preview-actions" role="group">
+<button aria-describedby="tip-mobile-preview" aria-label="Mobile preview" aria-pressed="true" class="icon-action tooltip-trigger active" data-preview-size="mobile" type="button"><svg aria-hidden="true" viewbox="0 0 24 24"><rect height="19" rx="2" width="10" x="7" y="2.5"></rect><path d="M10.5 18.5h3"></path></svg><span class="tooltip" id="tip-mobile-preview" role="tooltip">Mobile preview</span></button>
+<button aria-describedby="tip-desktop-preview" aria-label="Desktop preview" aria-pressed="false" class="icon-action tooltip-trigger" data-preview-size="desktop" type="button"><svg aria-hidden="true" viewbox="0 0 24 24"><rect height="12" rx="1.5" width="18" x="3" y="4"></rect><path d="M8 20h8M12 16v4"></path></svg><span class="tooltip" id="tip-desktop-preview" role="tooltip">Desktop preview</span></button>
+</div>
+</div>
+<div class="preview-stage">
+<div class="preview-shell" id="preview-shell">
+<div aria-hidden="true" class="browser-bar">
+<span class="browser-dots"><span></span><span></span><span></span></span>
+<span class="browser-address">your-guide.netlify.app</span>
+<span></span>
+</div>
+<iframe id="preview-frame" sandbox="allow-scripts allow-same-origin" title="Live guest guide preview"></iframe>
+</div>
+</div>
+</aside>
+</div>
+</div>
+<div aria-atomic="true" aria-live="polite" class="toast-region" id="toast-region"></div>
+<dialog aria-labelledby="payment-dialog-title" class="publish-dialog" id="payment-dialog">
+<form class="publish-dialog-inner" id="payment-form" novalidate="">
+<div class="publish-dialog-head">
+<div aria-hidden="true" class="publish-success">$</div>
+<div>
+<h2 id="payment-dialog-title">Create your guide files</h2>
+<p>Your $5 purchase includes this guide package and one updated download within 30 days.</p>
+</div>
+</div>
+<div class="payment-summary">
+<span>Guide package + one 30-day update</span>
+<strong id="payment-summary-price">$5</strong>
+</div>
+<div class="publish-dialog-actions">
+<button class="secondary" id="cancel-payment-button" type="button">Keep editing</button>
+<button class="primary" id="checkout-button" type="submit">Pay <span id="checkout-price">$5</span> and create files</button>
+</div>
+</form>
+</dialog>
+<dialog aria-labelledby="publish-dialog-title" class="publish-dialog" id="publish-dialog">
+<form class="publish-dialog-inner" method="dialog">
+<div class="publish-dialog-head">
+<div aria-hidden="true" class="publish-success">✓</div>
+<div>
+<h2 id="publish-dialog-title">Your guide is ready to publish</h2>
+<p>Your package is in Downloads. Keep the package for future edits, and publish only the folder marked for Netlify.</p>
+</div>
+</div>
+<ol class="publish-steps">
+<li><span><strong>Unzip the download.</strong><br/>On Mac, double-click the ZIP. On Windows, right-click it and choose Extract All.</span></li>
+<li><span><strong>Open the folder named PUBLISH-THIS-FOLDER.</strong><br/>Keep the separate KEEP-FOR-EDITS folder private. It lets you reopen the guide later.</span></li>
+<li><span><strong>Open Netlify Drop.</strong><br/>Sign in or create a Netlify account so the site stays connected to your account.</span></li>
+<li><span><strong>Drag PUBLISH-THIS-FOLDER into Netlify.</strong><br/>Do not upload the outer package or the KEEP-FOR-EDITS folder.</span></li>
+<li><span><strong>Copy your live link.</strong><br/>Open the <code>netlify.app</code> link on your phone, test it, and share it with guests.</span></li>
+</ol>
+<div class="publish-note">
+<strong>Need to make a change?</strong>
+      Open this original package in the builder. Your first updated download is included for 30 days; later updates can be created for $5 without starting over. Redeploy PUBLISH-THIS-FOLDER to the same Netlify project to keep your link.
+    </div>
+<section aria-labelledby="qr-title" class="qr-panel">
+<h3 id="qr-title">Create a QR code for your live guide</h3>
+<p>After Netlify gives you a live link, paste it here to download a QR code for a printed welcome card or sign.</p>
+<div class="qr-entry">
+<div>
+<label for="published-guide-url">Live guide link</label>
+<input aria-describedby="qr-error" id="published-guide-url" inputmode="url" placeholder="https://your-guide.netlify.app" type="url"/>
+</div>
+<button class="small-button" id="generate-qr-button" type="button">Create QR code</button>
+</div>
+<p class="qr-error" id="qr-error" role="alert"></p>
+<div class="qr-result" hidden="" id="qr-result">
+<div aria-label="QR code preview" class="qr-preview" id="qr-preview"></div>
+<div>
+<p>Test the code with your phone before printing it.</p>
+<div class="qr-downloads">
+<button class="small-button" id="download-qr-png" type="button">Download PNG</button>
+<button class="small-button" id="download-qr-svg" type="button">Download SVG</button>
+</div>
+</div>
+</div>
+</section>
+<section aria-labelledby="feedback-title" class="feedback-panel" id="feedback-panel">
+<h3 id="feedback-title">Help us make the builder even better</h3>
+<p>Open to a short conversation about your experience? Sharing your contact details is completely optional.</p>
+<div class="row2">
+<div>
+<label for="feedback_name">Name, optional</label>
+<input autocomplete="name" id="feedback_name" placeholder="Your name" type="text"/>
+</div>
+<div>
+<label for="feedback_email">Email</label>
+<input aria-describedby="feedback-error" autocomplete="email" id="feedback_email" inputmode="email" placeholder="you@example.com" type="email"/>
+</div>
+</div>
+<div class="check-row feedback-consent">
+<input id="feedback_consent" type="checkbox"/>
+<label for="feedback_consent">You may email me once to ask about my experience with this builder.</label>
+</div>
+<p class="payment-privacy">Your payment email is used by Stripe for checkout and receipts. Product feedback outreach requires the separate consent above.</p>
+<p aria-live="polite" class="payment-error" id="feedback-error" role="alert"></p>
+<button class="small-button" id="save-feedback-button" type="button">Share my contact details</button>
+<p class="hint" hidden="" id="feedback-saved">Thank you. Your contact permission was saved.</p>
+</section>
+<div class="publish-dialog-actions">
+<button class="secondary" type="submit">Close</button>
+<button class="primary" id="open-netlify-button" type="button">Open Netlify Drop</button>
+</div>
+</form>
+</dialog>
+<noscript>This builder requires JavaScript to create and download guide files.</noscript>
+<script src="jszip.min.js"></script>
+<script src="papaparse.min.js"></script>
+<script src="themes.js"></script>
+<script src="template-source.js"></script>
+<script src="qrcode-bundle.js"></script>
+<script>
+(function(){
+  'use strict';
+
+  const SCHEMA_VERSION = 3;
+  const BUILDER_VERSION = '2.11.0';
+  const DRAFT_KEY = 'guest-guide-builder-v2-draft';
+  const FEEDBACK_DRAFT_KEY = 'guest-guide-builder-v2-feedback';
+  const DB_NAME = 'guest-guide-builder-v2';
+  const DB_STORE = 'photos';
+  const DEFAULT_THEME = 'coastal';
+  const MAX_SOURCE_BYTES = 30 * 1024 * 1024;
+  let paymentPrice = {cents:500, currency:'usd', label:'$5'};
+
+  const FIELD_SCHEMA = [
+    {id:'property_name', path:['property','name']},
+    {id:'tagline', path:['property','tagline']},
+    {id:'host_names', path:['property','hostNames']},
+    {id:'host_response_note', path:['property','responseNote']},
+    {id:'wifi_name', path:['wifi','name']},
+    {id:'wifi_password', path:['wifi','password']},
+    {id:'checkin_time', path:['checkIn','time']},
+    {id:'checkin_steps', path:['checkIn','steps'], type:'lines'},
+    {id:'checkout_time', path:['checkOut','time']},
+    {id:'checkout_steps', path:['checkOut','steps'], type:'lines'},
+    {id:'house_rules', path:['houseRules'], type:'lines'},
+    {id:'local_tip', path:['localGuide','tip']},
+    {id:'review_link', path:['reviewUrl']}
+  ];
+
+  let selectedTheme = DEFAULT_THEME;
+  let currentGuideId = randomId();
+  let currentOwnerToken = '';
+  let currentEntitlement = null;
+  let currentPaymentSessionId = '';
+  let restoredFromPackage = false;
+  let photoRecords = [];
+  let recommendationRecords = {food:[], things:[]};
+  let templateHtmlCache = null;
+  let previewTimer = null;
+  let draftTimer = null;
+  let storageWarningShown = false;
+
+  class BuilderError extends Error {
+    constructor(message, code){
+      super(message);
+      this.name = 'BuilderError';
+      this.code = code || 'builder_error';
+    }
+  }
+
+  const byId = (id) => document.getElementById(id);
+  const form = byId('builder-form');
+  const previewFrame = byId('preview-frame');
+  const previewShell = byId('preview-shell');
+
+  let toastTimer = null;
+  function setStatus(message, type){
+    const status = byId('status');
+    if (status) status.textContent = message || '';
+    const region = byId('toast-region');
+    if (!region || !message) return;
+    const tone = ['success','error','warning','info'].includes(type) ? type : 'info';
+    region.replaceChildren();
+    if (toastTimer) clearTimeout(toastTimer);
+    const toast = document.createElement('div');
+    toast.className = `toast ${tone}`;
+    toast.setAttribute('role', tone === 'error' ? 'alert' : 'status');
+    const icon = document.createElement('span');
+    icon.className = 'toast-icon';
+    icon.setAttribute('aria-hidden', 'true');
+    icon.textContent = tone === 'success' ? '✓' : tone === 'error' ? '!' : tone === 'warning' ? '!' : 'i';
+    const copy = document.createElement('span');
+    copy.className = 'toast-message';
+    copy.textContent = message;
+    const dismiss = () => { if (toast.isConnected) toast.remove(); };
+    toast.append(icon, copy);
+    if (tone === 'error') {
+      toast.classList.add('dismissible');
+      const close = document.createElement('button');
+      close.type = 'button';
+      close.className = 'toast-close';
+      close.setAttribute('aria-label', 'Dismiss error');
+      close.textContent = '×';
+      close.addEventListener('click', dismiss);
+      toast.appendChild(close);
+    }
+    region.appendChild(toast);
+    if (tone !== 'error') toastTimer = window.setTimeout(dismiss, tone === 'warning' ? 6500 : 4200);
+  }
+
+  function setSaveState(message){
+    const state = byId('save-state');
+    state.textContent = message;
+    state.title = message;
+    state.dataset.state = /unavailable/i.test(message) ? 'unavailable' : /saving/i.test(message) ? 'saving' : 'saved';
+  }
+
+  function formatBytes(bytes){
+    if (!Number.isFinite(bytes) || bytes <= 0) return '';
+    if (bytes < 1024) return `${bytes} B`;
+    if (bytes < 1024 * 1024) return `${(bytes / 1024).toFixed(1)} KB`;
+    return `${(bytes / (1024 * 1024)).toFixed(1)} MB`;
+  }
+
+  function formatMoney(cents, currency){
+    try {
+      return new Intl.NumberFormat(undefined, {style:'currency', currency:String(currency || 'usd').toUpperCase(), maximumFractionDigits:cents % 100 ? 2 : 0}).format(cents / 100);
+    } catch (error) {
+      return `$${(cents / 100).toFixed(cents % 100 ? 2 : 0)}`;
+    }
+  }
+
+  async function loadPaymentConfig(){
+    try {
+      const response = await fetch('/.netlify/functions/payment-config', {headers:{accept:'application/json'}});
+      const payload = await response.json();
+      if (response.ok && Number.isInteger(payload.cents) && payload.cents > 0 && typeof payload.currency === 'string') {
+        paymentPrice = {cents:payload.cents, currency:payload.currency, label:formatMoney(payload.cents, payload.currency)};
+      }
+    } catch (error) {}
+    updatePaymentState();
+  }
+
+  function slugify(value){
+    return (value || 'guest-guide').toLowerCase().normalize('NFKD')
+      .replace(/[\u0300-\u036f]/g, '').replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '') || 'guest-guide';
+  }
+
+  function randomId(){
+    if (window.crypto && crypto.randomUUID) return crypto.randomUUID();
+    return `photo-${Date.now()}-${Math.random().toString(16).slice(2)}`;
+  }
+
+  function randomNonce(){
+    const bytes = new Uint8Array(18);
+    crypto.getRandomValues(bytes);
+    return btoa(String.fromCharCode(...bytes)).replace(/[^a-zA-Z0-9]/g, '');
+  }
+
+  function getPath(object, path){
+    return path.reduce((value, key) => value && value[key] !== undefined ? value[key] : undefined, object);
+  }
+
+  function setPath(object, path, value){
+    let target = object;
+    path.forEach((key, index) => {
+      if (index === path.length - 1) target[key] = value;
+      else {
+        if (!target[key] || typeof target[key] !== 'object') target[key] = {};
+        target = target[key];
+      }
+    });
+  }
+
+  function readLines(value){
+    return String(value || '').split(/\r?\n/).map((line) => line.trim()).filter(Boolean);
+  }
+
+  function parseRecommendations(value){
+    return readLines(value).map((line) => {
+      const separator = line.indexOf(' - ');
+      if (separator === -1) return {name:line, description:''};
+      return {name:line.slice(0, separator).trim(), description:line.slice(separator + 3).trim()};
+    });
+  }
+
+  function recommendationsToText(values){
+    if (!Array.isArray(values)) return '';
+    return values.map((item) => {
+      const name = item && typeof item.name === 'string' ? item.name.trim() : '';
+      const description = item && typeof item.description === 'string' ? item.description.trim() : '';
+      return description ? `${name} - ${description}` : name;
+    }).filter(Boolean).join('\n');
+  }
+
+  function normalizeHttpUrl(value){
+    let raw = String(value || '').trim();
+    if (!raw) return '';
+    if (/^(www\.|airbnb\.)/i.test(raw)) raw = `https://${raw}`;
+    try {
+      const parsed = new URL(raw);
+      return parsed.protocol === 'https:' || parsed.protocol === 'http:' ? parsed.href : null;
+    } catch (error) {
+      return null;
+    }
+  }
+
+  function mapProvider(value){
+    const normalized = normalizeHttpUrl(value);
+    if (!normalized) return '';
+    try {
+      const host = new URL(normalized).hostname.toLowerCase().replace(/^www\./, '');
+      if (host === 'maps.apple.com') return 'Apple Maps';
+      if (host === 'maps.app.goo.gl' || host === 'goo.gl' || host === 'maps.google.com' || (/^(?:[^.]+\.)?google\.[a-z.]+$/.test(host) && new URL(normalized).pathname.startsWith('/maps'))) return 'Google Maps';
+    } catch (error) {}
+    return '';
+  }
+
+  function normalizeMapUrl(value){
+    const normalized = normalizeHttpUrl(value);
+    return normalized && mapProvider(normalized) ? normalized : null;
+  }
+
+  function normalizeRecommendationRecord(value, category){
+    const source = value && typeof value === 'object' ? value : {};
+    return {
+      id:typeof source.id === 'string' && source.id ? source.id : randomId(),
+      category,
+      name:typeof source.name === 'string' ? source.name : '',
+      description:typeof source.description === 'string' ? source.description : '',
+      mapUrl:typeof source.mapUrl === 'string' ? source.mapUrl : (typeof source.url === 'string' ? source.url : ''),
+      image:source.image && typeof source.image === 'object' ? {...source.image} : null
+    };
+  }
+
+  function recommendationHasContent(item){
+    return Boolean(item && (String(item.name || '').trim() || String(item.description || '').trim() || String(item.mapUrl || '').trim() || item.image));
+  }
+
+  function recommendationForGuide(item){
+    const result = {
+      id:item.id,
+      name:String(item.name || '').trim(),
+      description:String(item.description || '').trim(),
+      mapUrl:normalizeMapUrl(item.mapUrl) || String(item.mapUrl || '').trim()
+    };
+    if (item.image) {
+      result.image = {
+        id:item.image.id,
+        src:item.image.previewUrl || item.image.src || '',
+        alt:String(item.image.alt || '').trim(),
+        width:item.image.width || 0,
+        height:item.image.height || 0,
+        originalName:item.image.originalName || '',
+        originalSize:item.image.originalSize || 0,
+        optimizedSize:item.image.blob ? item.image.blob.size : (item.image.optimizedSize || 0)
+      };
+    }
+    return result;
+  }
+
+  function setRecommendationRecords(localGuide){
+    const source = localGuide && typeof localGuide === 'object' ? localGuide : {};
+    recommendationRecords = {
+      food:Array.isArray(source.food) ? source.food.map((item) => normalizeRecommendationRecord(item, 'food')) : [],
+      things:Array.isArray(source.things) ? source.things.map((item) => normalizeRecommendationRecord(item, 'things')) : []
+    };
+  }
+
+  function collectContent(){
+    const guide = {
+      schemaVersion:SCHEMA_VERSION,
+      builderVersion:BUILDER_VERSION,
+      guideId:currentGuideId,
+      theme:selectedTheme,
+      property:{}, wifi:{}, checkIn:{steps:[]}, checkOut:{steps:[]},
+      houseRules:[], localGuide:{food:[], things:[]}, reviewUrl:'',
+      settings:{allowIndexing:byId('allow_indexing').checked}, photos:[]
+    };
+
+    FIELD_SCHEMA.forEach((field) => {
+      const element = byId(field.id);
+      let value = element ? element.value.trim() : '';
+      if (field.type === 'lines') value = readLines(value);
+      if (field.id === 'review_link') value = normalizeHttpUrl(value) || value;
+      setPath(guide, field.path, value);
+    });
+    guide.localGuide.food = recommendationRecords.food.filter(recommendationHasContent).map(recommendationForGuide);
+    guide.localGuide.things = recommendationRecords.things.filter(recommendationHasContent).map(recommendationForGuide);
+    return guide;
+  }
+
+  function buildDraftData(){
+    const guide = collectContent();
+    guide.lifecycle = {status:currentOwnerToken || restoredFromPackage ? 'managed_edit' : 'unpaid_draft', savedAt:new Date().toISOString()};
+    guide.builderAccess = currentOwnerToken ? {ownerToken:currentOwnerToken, entitlement:currentEntitlement || null, paymentSessionId:currentPaymentSessionId || ''} : null;
+    guide.photos = photoRecords.map((photo) => ({
+      id:photo.id, alt:photo.alt || '', width:photo.width, height:photo.height,
+      originalName:photo.originalName, originalSize:photo.originalSize, optimizedSize:photo.blob.size
+    }));
+    ['food','things'].forEach((category) => {
+      guide.localGuide[category] = (guide.localGuide[category] || []).map((item) => {
+        if (!item.image) return item;
+        const image = {...item.image};
+        delete image.src;
+        return {...item, image};
+      });
+    });
+    return guide;
+  }
+
+  function restoreForm(guide){
+    if (!guide || typeof guide !== 'object') throw new BuilderError('The guide data is not valid JSON.', 'invalid_json');
+    if (Number(guide.schemaVersion || 1) > SCHEMA_VERSION) {
+      throw new BuilderError('This guide was created by a newer builder version and cannot be edited here.', 'future_schema');
+    }
+
+    currentGuideId = typeof guide.guideId === 'string' && guide.guideId.trim() ? guide.guideId.trim() : randomId();
+    const access = guide.builderAccess && typeof guide.builderAccess === 'object' ? guide.builderAccess : {};
+    currentOwnerToken = typeof access.ownerToken === 'string' ? access.ownerToken : '';
+    currentEntitlement = access.entitlement && typeof access.entitlement === 'object' ? access.entitlement : null;
+    currentPaymentSessionId = typeof access.paymentSessionId === 'string' ? access.paymentSessionId : '';
+    selectedTheme = THEMES[guide.theme] ? guide.theme : DEFAULT_THEME;
+    document.querySelectorAll('input[name="theme"]').forEach((input) => {
+      input.checked = input.value === selectedTheme;
+    });
+
+    FIELD_SCHEMA.forEach((field) => {
+      const element = byId(field.id);
+      let value = getPath(guide, field.path);
+      if (field.type === 'lines') value = Array.isArray(value) ? value.join('\n') : String(value || '').split('|').join('\n');
+      if (field.type === 'recommendations') value = recommendationsToText(value);
+      element.value = typeof value === 'string' ? value : '';
+    });
+
+    clearRecommendationImages();
+    setRecommendationRecords(guide.localGuide);
+    renderRecommendationEditors();
+
+    byId('allow_indexing').checked = Boolean(guide.settings && guide.settings.allowIndexing);
+    byId('public_acknowledgement').checked = false;
+  }
+
+  function renderThemePicker(){
+    const picker = byId('theme-picker');
+    picker.replaceChildren();
+    Object.entries(THEMES).forEach(([key, theme]) => {
+      const wrapper = document.createElement('div');
+      wrapper.className = 'theme-option';
+      const input = document.createElement('input');
+      input.type = 'radio';
+      input.name = 'theme';
+      input.id = `theme-${key}`;
+      input.value = key;
+      input.checked = key === selectedTheme;
+      input.setAttribute('aria-describedby', `theme-description-${key}`);
+      const label = document.createElement('label');
+      label.className = 'theme-card';
+      label.htmlFor = input.id;
+      label.dataset.theme = key;
+      const check = document.createElement('span');
+      check.className = 'theme-check';
+      check.setAttribute('aria-hidden', 'true');
+      check.textContent = '✓';
+      const swatches = document.createElement('span');
+      swatches.className = 'swatches';
+      theme.swatch.forEach((color) => {
+        const swatch = document.createElement('span');
+        swatch.style.background = color;
+        swatches.appendChild(swatch);
+      });
+      const name = document.createElement('span');
+      name.className = 'theme-name';
+      name.textContent = theme.label;
+      const description = document.createElement('span');
+      description.className = 'theme-description';
+      description.id = `theme-description-${key}`;
+      description.textContent = theme.description;
+      label.append(check, swatches, name, description);
+      wrapper.append(input, label);
+      picker.appendChild(wrapper);
+    });
+  }
+
+  async function getTemplateHtml(){
+    if (templateHtmlCache) return templateHtmlCache;
+    if (location.protocol !== 'file:') {
+      try {
+        const response = await fetch('index-template.html', {cache:'no-store'});
+        if (!response.ok) throw new Error(`HTTP ${response.status}`);
+        templateHtmlCache = await response.text();
+        return templateHtmlCache;
+      } catch (error) {
+        if (!window.GUIDE_TEMPLATE) {
+          throw new BuilderError('The guide template could not be loaded. Keep index-template.html beside builder.html and serve the folder over http.', 'template_load');
+        }
+      }
+    }
+    if (window.GUIDE_TEMPLATE) {
+      templateHtmlCache = window.GUIDE_TEMPLATE;
+      return templateHtmlCache;
+    }
+    throw new BuilderError('The local template fallback is missing. Keep template-source.js beside builder.html.', 'template_missing');
+  }
+
+  function applyTheme(templateHtml, themeKey){
+    const theme = THEMES[themeKey] || THEMES[DEFAULT_THEME];
+    return templateHtml
+      .replace(/\/\* THEME-TOKENS-START \*\/[\s\S]*?\/\* THEME-TOKENS-END \*\//, `/* THEME-TOKENS-START */\n${theme.css}\n/* THEME-TOKENS-END */`)
+      .replace(/<!-- FONT-LINK-START -->[\s\S]*?<!-- FONT-LINK-END -->/, `<!-- FONT-LINK-START -->\n${theme.fontLink}\n<!-- FONT-LINK-END -->`)
+      .replace(/\{\{THEME_KEY\}\}/g, themeKey);
+  }
+
+  function escapeAttribute(value){
+    return String(value || '').replace(/&/g, '&amp;').replace(/"/g, '&quot;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+  }
+
+  function safeJsonForHtml(value){
+    return JSON.stringify(value)
+      .replace(/</g, '\\u003c').replace(/>/g, '\\u003e').replace(/&/g, '\\u0026')
+      .replace(/\u2028/g, '\\u2028').replace(/\u2029/g, '\\u2029');
+  }
+
+  function makeFavicon(themeKey, propertyName){
+    const theme = THEMES[themeKey] || THEMES[DEFAULT_THEME];
+    const initial = (propertyName || 'G').trim().charAt(0).toUpperCase().replace(/[^A-Z0-9]/g, 'G');
+    const svg = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64"><rect width="64" height="64" rx="14" fill="${theme.swatch[0]}"/><text x="32" y="42" text-anchor="middle" font-family="Arial,sans-serif" font-size="34" font-weight="700" fill="white">${initial}</text></svg>`;
+    return `data:image/svg+xml,${encodeURIComponent(svg)}`;
+  }
+
+  async function buildHtml(guide){
+    const base = applyTheme(await getTemplateHtml(), guide.theme);
+    const nonce = randomNonce();
+    const propertyName = (guide.property && guide.property.name || '').trim() || 'Guest guide';
+    const tagline = (guide.property && guide.property.tagline || '').trim();
+    const description = tagline || `Arrival details, Wi-Fi, house guidelines, and local recommendations for ${propertyName}.`;
+    const title = `${propertyName} guest guide`;
+    const theme = THEMES[guide.theme] || THEMES[DEFAULT_THEME];
+    const cover = Array.isArray(guide.photos) && guide.photos[0] ? guide.photos[0].src : '';
+    const ogImage = cover ? `<meta property="og:image" content="${escapeAttribute(cover)}">` : '';
+    const favicon = `<link rel="icon" href="${escapeAttribute(makeFavicon(guide.theme, propertyName))}">`;
+    const dataScript = `<script type="application/json" id="guide-data" nonce="${nonce}">${safeJsonForHtml(guide)}<\/script>`;
+
+    return base
+      .replace(/\{\{CSP_NONCE\}\}/g, nonce)
+      .replace(/\{\{ROBOTS\}\}/g, guide.settings && guide.settings.allowIndexing ? 'index, follow' : 'noindex, nofollow')
+      .replace(/\{\{META_DESCRIPTION\}\}/g, escapeAttribute(description))
+      .replace(/\{\{OG_TITLE\}\}/g, escapeAttribute(title))
+      .replace(/\{\{OG_DESCRIPTION\}\}/g, escapeAttribute(description))
+      .replace(/\{\{THEME_COLOR\}\}/g, escapeAttribute(theme.swatch[0]))
+      .replace(/\{\{PAGE_TITLE\}\}/g, escapeAttribute(title))
+      .replace('<!-- OG_IMAGE -->', ogImage)
+      .replace('<!-- FAVICON -->', favicon)
+      .replace('<!-- GUIDE-DATA -->', dataScript);
+  }
+
+  function updatePreviewSoon(){
+    clearTimeout(previewTimer);
+    previewTimer = setTimeout(renderLivePreview, 260);
+  }
+
+  async function renderLivePreview(){
+    try {
+      const guide = collectContent();
+      guide.photos = photoRecords.map((photo) => ({src:photo.previewUrl, alt:photo.alt || ''}));
+      previewFrame.srcdoc = await buildHtml(guide);
+    } catch (error) {
+      console.error(error);
+      previewFrame.srcdoc = `<p class="preview-error">${escapeAttribute(error.message || 'Preview unavailable.')}</p>`;
+    }
+  }
+
+  async function decodeImage(blob){
+    if ('createImageBitmap' in window) {
+      try {
+        return await createImageBitmap(blob, {imageOrientation:'from-image'});
+      } catch (error) {
+        try { return await createImageBitmap(blob); } catch (ignored) {}
+      }
+    }
+    return await new Promise((resolve, reject) => {
+      const url = URL.createObjectURL(blob);
+      const image = new Image();
+      image.onload = () => {
+        URL.revokeObjectURL(url);
+        resolve(image);
+      };
+      image.onerror = () => {
+        URL.revokeObjectURL(url);
+        reject(new BuilderError('This browser could not read the image. Convert HEIC or HEIF photos to JPG first.', 'image_decode'));
+      };
+      image.src = url;
+    });
+  }
+
+  function canvasToBlob(canvas, type, quality){
+    return new Promise((resolve) => canvas.toBlob(resolve, type, quality));
+  }
+
+  async function resizeImageBlob(blob, maxWidth, quality){
+    const source = await decodeImage(blob);
+    const sourceWidth = source.width || source.naturalWidth;
+    const sourceHeight = source.height || source.naturalHeight;
+    if (!sourceWidth || !sourceHeight) {
+      if (source.close) source.close();
+      throw new BuilderError('An image has invalid dimensions.', 'image_dimensions');
+    }
+    const scale = Math.min(1, maxWidth / sourceWidth);
+    const width = Math.max(1, Math.round(sourceWidth * scale));
+    const height = Math.max(1, Math.round(sourceHeight * scale));
+    const canvas = document.createElement('canvas');
+    canvas.width = width;
+    canvas.height = height;
+    const context = canvas.getContext('2d', {alpha:true});
+    context.imageSmoothingEnabled = true;
+    context.imageSmoothingQuality = 'high';
+    context.drawImage(source, 0, 0, width, height);
+    if (source.close) source.close();
+    let output = await canvasToBlob(canvas, 'image/webp', quality);
+    let extension = 'webp';
+    if (!output) {
+      output = await canvasToBlob(canvas, 'image/jpeg', quality);
+      extension = 'jpg';
+    }
+    if (!output) throw new BuilderError('The browser could not compress an image.', 'image_encode');
+    return {blob:output, width, height, extension};
+  }
+
+  async function addPhotos(files){
+    const imageFiles = Array.from(files || []).filter((file) => file && file.type && file.type.startsWith('image/'));
+    if (!imageFiles.length) {
+      setStatus('Those files could not be added. Choose JPEG, PNG, WebP, AVIF, HEIC, or HEIF images.', 'warning');
+      return;
+    }
+    const failures = [];
+    for (let index = 0; index < imageFiles.length; index += 1) {
+      const file = imageFiles[index];
+      try {
+        if (file.size > MAX_SOURCE_BYTES) throw new BuilderError(`${file.name} is larger than 30 MB.`, 'image_too_large');
+        setStatus(`Optimizing photo ${index + 1} of ${imageFiles.length}...`);
+        const optimized = await resizeImageBlob(file, 2400, .9);
+        const record = {
+          id:randomId(), originalName:file.name, originalSize:file.size,
+          blob:optimized.blob, width:optimized.width, height:optimized.height,
+          extension:optimized.extension, alt:'', previewUrl:URL.createObjectURL(optimized.blob)
+        };
+        photoRecords.push(record);
+      } catch (error) {
+        failures.push(`${file.name}: ${error.message}`);
+      }
+    }
+    renderPhotoList();
+    await persistPhotos();
+    scheduleDraftSave();
+    updatePreviewSoon();
+    if (failures.length) setStatus(`A few photos could not be added. ${failures.join(' ')}`, 'warning');
+    else setStatus(`${imageFiles.length} ${imageFiles.length === 1 ? 'photo' : 'photos'} added.`, 'success');
+  }
+
+  function revokePhoto(record){
+    if (record && record.previewUrl) URL.revokeObjectURL(record.previewUrl);
+  }
+
+  function clearPhotoRecords(){
+    photoRecords.forEach(revokePhoto);
+    photoRecords = [];
+  }
+
+  let draggedPhotoId = '';
+
+  function closePhotoMenus(exceptItem){
+    document.querySelectorAll('.photo-item.menu-open').forEach((item) => {
+      if (item === exceptItem) return;
+      item.classList.remove('menu-open');
+      const button = item.querySelector('.photo-menu-trigger');
+      const menu = item.querySelector('.photo-menu');
+      if (button) button.setAttribute('aria-expanded', 'false');
+      if (menu) menu.hidden = true;
+    });
+  }
+
+  function openPhotoMenu(item, button, menu){
+    const shouldOpen = menu.hidden;
+    closePhotoMenus(shouldOpen ? item : null);
+    item.classList.toggle('menu-open', shouldOpen);
+    button.setAttribute('aria-expanded', String(shouldOpen));
+    menu.hidden = !shouldOpen;
+    if (shouldOpen) requestAnimationFrame(() => menu.querySelector('[role="menuitem"]')?.focus());
+  }
+
+  function renderPhotoList(){
+    const list = byId('photo-list');
+    list.replaceChildren();
+    photoRecords.forEach((photo, index) => {
+      const item = document.createElement('article');
+      item.className = 'photo-item';
+
+      const visual = document.createElement('div');
+      visual.className = 'photo-visual';
+      const image = document.createElement('img');
+      image.src = photo.previewUrl;
+      image.alt = photo.alt || `Uploaded property photo ${index + 1}`;
+      visual.appendChild(image);
+      if (index === 0) {
+        const badge = document.createElement('span');
+        badge.className = 'cover-badge';
+        badge.textContent = 'Cover';
+        visual.appendChild(badge);
+      }
+
+      const menuId = `photo-menu-${photo.id}`;
+      const menuButton = document.createElement('button');
+      menuButton.type = 'button';
+      menuButton.className = 'photo-menu-trigger';
+      menuButton.setAttribute('aria-label', `Photo ${index + 1} options`);
+      menuButton.setAttribute('aria-haspopup', 'menu');
+      menuButton.setAttribute('aria-expanded', 'false');
+      menuButton.setAttribute('aria-controls', menuId);
+      menuButton.innerHTML = fixedIcon('more');
+
+      const menu = document.createElement('div');
+      menu.className = 'photo-menu';
+      menu.id = menuId;
+      menu.setAttribute('role', 'menu');
+      menu.hidden = true;
+
+      if (index !== 0) {
+        const coverButton = document.createElement('button');
+        coverButton.type = 'button';
+        coverButton.className = 'photo-menu-item';
+        coverButton.setAttribute('role', 'menuitem');
+        coverButton.innerHTML = fixedIcon('image') + '<span>Set as cover</span>';
+        coverButton.addEventListener('click', async () => {
+          closePhotoMenus();
+          await movePhoto(index, 0);
+          setStatus('Cover photo updated.', 'success');
+        });
+        menu.appendChild(coverButton);
+      }
+
+      const removeButton = document.createElement('button');
+      removeButton.type = 'button';
+      removeButton.className = 'photo-menu-item danger';
+      removeButton.setAttribute('role', 'menuitem');
+      removeButton.innerHTML = fixedIcon('trash') + '<span>Delete photo</span>';
+      removeButton.addEventListener('click', async () => {
+        closePhotoMenus();
+        const removed = photoRecords.splice(index, 1)[0];
+        revokePhoto(removed);
+        renderPhotoList();
+        await persistPhotos();
+        scheduleDraftSave();
+        updatePreviewSoon();
+        setStatus('Photo removed.', 'success');
+      });
+      menu.appendChild(removeButton);
+
+      menuButton.addEventListener('click', (event) => {
+        event.stopPropagation();
+        openPhotoMenu(item, menuButton, menu);
+      });
+      menu.addEventListener('click', (event) => event.stopPropagation());
+      menu.addEventListener('keydown', (event) => {
+        const items = Array.from(menu.querySelectorAll('[role="menuitem"]:not(:disabled)'));
+        const current = items.indexOf(document.activeElement);
+        if (event.key === 'Escape') {
+          event.preventDefault();
+          closePhotoMenus();
+          menuButton.focus();
+        } else if (event.key === 'ArrowDown') {
+          event.preventDefault();
+          items[(current + 1 + items.length) % items.length]?.focus();
+        } else if (event.key === 'ArrowUp') {
+          event.preventDefault();
+          items[(current - 1 + items.length) % items.length]?.focus();
+        } else if (event.key === 'Home') {
+          event.preventDefault();
+          items[0]?.focus();
+        } else if (event.key === 'End') {
+          event.preventDefault();
+          items.at(-1)?.focus();
+        }
+      });
+      visual.append(menuButton, menu);
+
+      const field = document.createElement('div');
+      field.className = 'photo-description-field';
+      const altLabel = document.createElement('label');
+      altLabel.htmlFor = `photo-alt-${photo.id}`;
+      altLabel.appendChild(document.createTextNode('Photo description'));
+      const optional = document.createElement('span');
+      optional.className = 'optional-label';
+      optional.textContent = 'Optional';
+      altLabel.appendChild(optional);
+      const altInput = document.createElement('input');
+      altInput.type = 'text';
+      altInput.id = `photo-alt-${photo.id}`;
+      altInput.value = photo.alt || '';
+      altInput.placeholder = 'Bright living room with an ocean view';
+      altInput.addEventListener('input', () => {
+        photo.alt = altInput.value;
+        image.alt = photo.alt || `Uploaded property photo ${index + 1}`;
+        scheduleDraftSave();
+        updatePreviewSoon();
+      });
+      field.append(altLabel, altInput);
+
+      item.append(visual, field);
+      list.appendChild(item);
+    });
+
+    const count = photoRecords.length;
+    byId('photo-count').textContent = count ? `${count} ${count === 1 ? 'photo' : 'photos'}` : 'No photos yet';
+    const totalOriginal = photoRecords.reduce((sum, photo) => sum + (photo.originalSize || 0), 0);
+    const totalOptimized = photoRecords.reduce((sum, photo) => sum + photo.blob.size, 0);
+    byId('photo-size').textContent = count ? `${formatBytes(totalOriginal)} → ${formatBytes(totalOptimized)}` : '';
+    renderPhotoReorder();
+    if (count > 20) setStatus('For a faster guest experience, consider using 20 photos or fewer.', 'warning');
+  }
+
+  function renderPhotoReorder(){
+    const toggle = byId('photo-reorder-toggle');
+    const panel = byId('photo-reorder-panel');
+    const list = byId('photo-reorder-list');
+    if (!toggle || !panel || !list) return;
+    const canReorder = photoRecords.length > 1;
+    toggle.hidden = !canReorder;
+    if (!canReorder) {
+      panel.hidden = true;
+      toggle.setAttribute('aria-expanded', 'false');
+      list.replaceChildren();
+      return;
+    }
+
+    list.replaceChildren();
+    photoRecords.forEach((photo, index) => {
+      const row = document.createElement('div');
+      row.className = 'photo-reorder-item';
+      row.draggable = true;
+      row.dataset.photoId = photo.id;
+
+      const grip = document.createElement('span');
+      grip.className = 'reorder-grip';
+      grip.innerHTML = fixedIcon('grip');
+      grip.setAttribute('aria-hidden', 'true');
+
+      const thumbnail = document.createElement('img');
+      thumbnail.src = photo.previewUrl;
+      thumbnail.alt = '';
+
+      const copy = document.createElement('div');
+      copy.className = 'reorder-copy';
+      const title = document.createElement('strong');
+      title.textContent = index === 0 ? 'Cover photo' : `Photo ${index + 1}`;
+      const subtitle = document.createElement('span');
+      subtitle.textContent = photo.alt.trim() || photo.originalName || 'No description';
+      copy.append(title, subtitle);
+
+      const actions = document.createElement('div');
+      actions.className = 'reorder-actions';
+      const up = document.createElement('button');
+      up.type = 'button';
+      up.className = 'reorder-icon tooltip-trigger';
+      up.disabled = index === 0;
+      up.innerHTML = fixedIcon('up') + '<span class="tooltip" role="tooltip">Move earlier</span>';
+      up.setAttribute('aria-label', `Move photo ${index + 1} earlier`);
+      up.addEventListener('click', async () => {
+        await movePhoto(index, index - 1);
+        setStatus('Photo order updated.', 'success');
+      });
+      const down = document.createElement('button');
+      down.type = 'button';
+      down.className = 'reorder-icon tooltip-trigger';
+      down.disabled = index === photoRecords.length - 1;
+      down.innerHTML = fixedIcon('down') + '<span class="tooltip" role="tooltip">Move later</span>';
+      down.setAttribute('aria-label', `Move photo ${index + 1} later`);
+      down.addEventListener('click', async () => {
+        await movePhoto(index, index + 1);
+        setStatus('Photo order updated.', 'success');
+      });
+      actions.append(up, down);
+
+      row.addEventListener('dragstart', (event) => {
+        draggedPhotoId = photo.id;
+        row.classList.add('dragging');
+        event.dataTransfer.effectAllowed = 'move';
+        event.dataTransfer.setData('text/plain', photo.id);
+      });
+      row.addEventListener('dragend', () => {
+        draggedPhotoId = '';
+        row.classList.remove('dragging');
+        list.querySelectorAll('.drag-over').forEach((item) => item.classList.remove('drag-over'));
+      });
+      row.addEventListener('dragover', (event) => {
+        event.preventDefault();
+        if (draggedPhotoId && draggedPhotoId !== photo.id) row.classList.add('drag-over');
+      });
+      row.addEventListener('dragleave', () => row.classList.remove('drag-over'));
+      row.addEventListener('drop', async (event) => {
+        event.preventDefault();
+        row.classList.remove('drag-over');
+        const fromIndex = photoRecords.findIndex((record) => record.id === draggedPhotoId);
+        const toIndex = photoRecords.findIndex((record) => record.id === photo.id);
+        if (fromIndex >= 0 && toIndex >= 0 && fromIndex !== toIndex) {
+          await movePhoto(fromIndex, toIndex);
+          setStatus('Photo order updated.', 'success');
+        }
+      });
+
+      row.append(grip, thumbnail, copy, actions);
+      list.appendChild(row);
+    });
+  }
+
+  async function movePhoto(fromIndex, toIndex){
+    if (toIndex < 0 || toIndex >= photoRecords.length || fromIndex === toIndex) return;
+    const [photo] = photoRecords.splice(fromIndex, 1);
+    photoRecords.splice(toIndex, 0, photo);
+    renderPhotoList();
+    await persistPhotos();
+    scheduleDraftSave();
+    updatePreviewSoon();
+  }
+
+
+  document.addEventListener('click', (event) => {
+    if (!event.target.closest('.photo-item')) closePhotoMenus();
+  });
+  document.addEventListener('keydown', (event) => {
+    if (event.key === 'Escape' && document.querySelector('.photo-item.menu-open')) closePhotoMenus();
+  });
+
+
+  function fixedIcon(name){
+    const icons = {
+      trash:'<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h16"/><path d="M9 7V4h6v3"/><path d="m6 7 1 13h10l1-13"/><path d="M10 11v5M14 11v5"/></svg>',
+      remove:'<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h16"/><path d="M9 7V4h6v3"/><path d="m6 7 1 13h10l1-13"/><path d="M10 11v5M14 11v5"/></svg>',
+      image:'<svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="4" width="18" height="16" rx="2"/><circle cx="8.5" cy="9" r="1.5"/><path d="m5 18 5-5 3 3 2-2 4 4"/></svg>',
+      grip:'<svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="9" cy="6" r="1"/><circle cx="15" cy="6" r="1"/><circle cx="9" cy="12" r="1"/><circle cx="15" cy="12" r="1"/><circle cx="9" cy="18" r="1"/><circle cx="15" cy="18" r="1"/></svg>',
+      up:'<svg viewBox="0 0 24 24" aria-hidden="true"><path d="m7 14 5-5 5 5"/></svg>',
+      down:'<svg viewBox="0 0 24 24" aria-hidden="true"><path d="m7 10 5 5 5-5"/></svg>',
+      more:'<svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="5" r="1.5"/><circle cx="12" cy="12" r="1.5"/><circle cx="12" cy="19" r="1.5"/></svg>'
+    };
+    return icons[name] || '';
+  }
+
+  function revokeRecommendationImage(image){
+    if (image && image.previewUrl) URL.revokeObjectURL(image.previewUrl);
+  }
+
+  function clearRecommendationImages(){
+    ['food','things'].forEach((category) => recommendationRecords[category].forEach((item) => revokeRecommendationImage(item.image)));
+  }
+
+  function addRecommendation(category){
+    const item = normalizeRecommendationRecord({}, category);
+    recommendationRecords[category].push(item);
+    renderRecommendationEditors();
+    scheduleDraftSave();
+    updatePreviewSoon();
+    requestAnimationFrame(() => byId(`recommendation-map-${item.id}`)?.focus());
+  }
+
+  async function setRecommendationImage(item, file){
+    if (!file) return;
+    if (!file.type || !file.type.startsWith('image/')) {
+      setStatus('Choose a supported image for this recommendation.', 'warning');
+      return;
+    }
+    if (file.size > MAX_SOURCE_BYTES) {
+      setStatus(`${file.name} is larger than 30 MB.`, 'warning');
+      return;
+    }
+    try {
+      setStatus('Optimizing recommendation photo...');
+      const optimized = await resizeImageBlob(file, 1800, .88);
+      revokeRecommendationImage(item.image);
+      item.image = {
+        id:item.image && item.image.id ? item.image.id : randomId(),
+        originalName:file.name, originalSize:file.size, blob:optimized.blob,
+        width:optimized.width, height:optimized.height, extension:optimized.extension,
+        alt:item.name ? `${item.name} recommendation photo` : '',
+        previewUrl:URL.createObjectURL(optimized.blob)
+      };
+      renderRecommendationEditors();
+      await persistPhotos();
+      scheduleDraftSave();
+      updatePreviewSoon();
+      setStatus('Photo added to your recommendation.', 'success');
+    } catch (error) {
+      setStatus(error.message || 'We could not add that recommendation photo.', 'error');
+    }
+  }
+
+  function renderRecommendationEditors(){
+    ['food','things'].forEach((category) => {
+      const target = byId(`${category}-recommendations`);
+      const empty = byId(`${category}-empty`);
+      if (!target || !empty) return;
+      target.replaceChildren();
+      const records = recommendationRecords[category];
+      empty.hidden = records.length > 0;
+      records.forEach((item, index) => {
+        const article = document.createElement('article');
+        article.className = 'recommendation-item';
+        article.dataset.recommendationId = item.id;
+
+        const head = document.createElement('div');
+        head.className = 'recommendation-item-head';
+        const title = document.createElement('strong');
+        title.textContent = item.name.trim() || `Place ${index + 1}`;
+        const remove = document.createElement('button');
+        remove.type = 'button';
+        remove.className = 'recommendation-remove tooltip-trigger';
+        remove.setAttribute('aria-label', `Delete ${title.textContent}`);
+        remove.innerHTML = fixedIcon('trash') + '<span class="tooltip" role="tooltip">Delete place</span>';
+        remove.addEventListener('click', async () => {
+          revokeRecommendationImage(item.image);
+          recommendationRecords[category].splice(index, 1);
+          renderRecommendationEditors();
+          await persistPhotos();
+          scheduleDraftSave();
+          updatePreviewSoon();
+        });
+        head.append(title, remove);
+
+        const mapWrap = document.createElement('div');
+        mapWrap.className = 'map-link-row';
+        const mapField = document.createElement('div');
+        const mapLabel = document.createElement('label');
+        mapLabel.htmlFor = `recommendation-map-${item.id}`;
+        mapLabel.textContent = 'Map link';
+        const mapInput = document.createElement('input');
+        mapInput.type = 'text';
+        mapInput.inputMode = 'url';
+        mapInput.id = `recommendation-map-${item.id}`;
+        mapInput.value = item.mapUrl || '';
+        mapInput.placeholder = 'Paste a Google Maps or Apple Maps link';
+        mapInput.addEventListener('input', () => {
+          item.mapUrl = mapInput.value;
+          scheduleDraftSave();
+          updatePreviewSoon();
+        });
+        mapField.append(mapLabel, mapInput);
+        mapWrap.append(mapField);
+
+        const row = document.createElement('div');
+        row.className = 'row2';
+        const nameField = document.createElement('div');
+        const nameLabel = document.createElement('label');
+        nameLabel.htmlFor = `recommendation-name-${item.id}`;
+        nameLabel.textContent = 'Place name';
+        const nameInput = document.createElement('input');
+        nameInput.type = 'text';
+        nameInput.id = `recommendation-name-${item.id}`;
+        nameInput.value = item.name || '';
+        nameInput.placeholder = 'The Salt Table';
+        nameInput.addEventListener('input', () => {
+          item.name = nameInput.value;
+          title.textContent = item.name.trim() || `Place ${index + 1}`;
+          if (item.image && !item.image.alt) item.image.alt = item.name ? `${item.name} recommendation photo` : '';
+          scheduleDraftSave();
+          updatePreviewSoon();
+        });
+        nameField.append(nameLabel, nameInput);
+        const noteField = document.createElement('div');
+        const noteLabel = document.createElement('label');
+        noteLabel.htmlFor = `recommendation-note-${item.id}`;
+        noteLabel.textContent = 'Your host tip';
+        const noteInput = document.createElement('input');
+        noteInput.type = 'text';
+        noteInput.id = `recommendation-note-${item.id}`;
+        noteInput.value = item.description || '';
+        noteInput.placeholder = 'Try the fish tacos and ask for a patio table';
+        noteInput.addEventListener('input', () => {
+          item.description = noteInput.value;
+          scheduleDraftSave();
+          updatePreviewSoon();
+        });
+        noteField.append(noteLabel, noteInput);
+        row.append(nameField, noteField);
+
+        const photoRow = document.createElement('div');
+        photoRow.className = 'recommendation-photo';
+        const preview = document.createElement('div');
+        preview.className = 'recommendation-photo-preview';
+        if (item.image && item.image.previewUrl) {
+          preview.classList.add('has-image');
+          const image = document.createElement('img');
+          image.src = item.image.previewUrl;
+          image.alt = item.image.alt || `${item.name || 'Place'} recommendation photo`;
+          preview.appendChild(image);
+        } else preview.innerHTML = fixedIcon('image');
+        const actions = document.createElement('div');
+        actions.className = 'recommendation-photo-actions';
+        const fileId = `recommendation-photo-${item.id}`;
+        const uploadLabel = document.createElement('label');
+        uploadLabel.htmlFor = fileId;
+        uploadLabel.tabIndex = 0;
+        uploadLabel.setAttribute('role', 'button');
+        uploadLabel.innerHTML = fixedIcon('image') + `<span>${item.image ? 'Change photo' : 'Add a photo'}</span>`;
+        uploadLabel.addEventListener('keydown', (event) => {
+          if (event.key === 'Enter' || event.key === ' ') {
+            event.preventDefault();
+            byId(fileId)?.click();
+          }
+        });
+        const fileInput = document.createElement('input');
+        fileInput.type = 'file';
+        fileInput.id = fileId;
+        fileInput.accept = 'image/jpeg,image/png,image/webp,image/avif,image/heic,image/heif';
+        fileInput.addEventListener('change', () => {
+          setRecommendationImage(item, fileInput.files[0]);
+          fileInput.value = '';
+        });
+        actions.append(uploadLabel, fileInput);
+        if (item.image) {
+          const altField = document.createElement('input');
+          altField.type = 'text';
+          altField.value = item.image.alt || '';
+          altField.placeholder = 'Photo description';
+          altField.setAttribute('aria-label', `Photo description for ${item.name || 'recommendation'}`);
+          altField.addEventListener('input', () => {
+            item.image.alt = altField.value;
+            scheduleDraftSave();
+            updatePreviewSoon();
+          });
+          const removePhoto = document.createElement('button');
+          removePhoto.type = 'button';
+          removePhoto.className = 'recommendation-photo-remove';
+          removePhoto.innerHTML = fixedIcon('trash') + '<span>Remove photo</span>';
+          removePhoto.setAttribute('aria-label', `Remove photo for ${item.name || 'recommendation'}`);
+          removePhoto.addEventListener('click', async () => {
+            revokeRecommendationImage(item.image);
+            item.image = null;
+            renderRecommendationEditors();
+            await persistPhotos();
+            scheduleDraftSave();
+            updatePreviewSoon();
+          });
+          actions.append(altField, removePhoto);
+        }
+        photoRow.append(preview, actions);
+        article.append(head, mapWrap, row, photoRow);
+        target.appendChild(article);
+      });
+    });
+  }
+
+  function hydrateRecommendationImages(assetMap){
+    ['food','things'].forEach((category) => {
+      recommendationRecords[category].forEach((item) => {
+        const metadata = item.image;
+        if (!metadata || !metadata.id) return;
+        const stored = assetMap.get(metadata.id);
+        if (!stored || !stored.blob) return;
+        item.image = {...stored, alt:metadata.alt || stored.alt || '', previewUrl:URL.createObjectURL(stored.blob)};
+      });
+    });
+  }
+
+  function detectAccessCredentials(){
+    const fields = FIELD_SCHEMA.filter((field) => !['wifi_name','wifi_password','review_link'].includes(field.id));
+    const keyword = /\b(?:door|entry|entrance|gate|garage|alarm|keypad|lockbox|smart\s*lock|access)\b/i;
+    const credential = /\b(?:code|pin|password|passcode|combination)\b/i;
+    const explicit = /\b(?:door|entry|gate|garage|alarm|keypad|lockbox|access)\s*(?:code|pin|password|passcode|combination)\b/i;
+    const valuePattern = /(?:code|pin|passcode|combination)\s*(?:is|:|=|-)?\s*[a-z0-9]{3,}/i;
+    const accessNumber = /\b(?:door|entry|entrance|gate|garage|alarm|keypad|lockbox|access)\b.{0,30}\b\d{3,10}\b|\b\d{3,10}\b.{0,30}\b(?:door|entry|entrance|gate|garage|alarm|keypad|lockbox|access)\b/i;
+    const matches = [];
+    fields.forEach((field) => {
+      const element = byId(field.id);
+      readLines(element ? element.value : '').forEach((line) => {
+        if (explicit.test(line) || (keyword.test(line) && credential.test(line)) || accessNumber.test(line) || (field.id === 'checkin_steps' && valuePattern.test(line))) {
+          matches.push({field, line});
+        }
+      });
+    });
+    return matches;
+  }
+
+  function clearValidation(){
+    document.querySelectorAll('[aria-invalid="true"]').forEach((element) => element.setAttribute('aria-invalid', 'false'));
+    byId('checkin_steps-error').hidden = true;
+    byId('review_link-error').hidden = true;
+    byId('error-summary').hidden = true;
+    byId('error-list').replaceChildren();
+  }
+
+  function validateForDownload(){
+    clearValidation();
+    const errors = [];
+    if (!byId('property_name').value.trim()) {
+      errors.push('Add the property name guests will recognize.');
+      byId('property_name').setAttribute('aria-invalid', 'true');
+    }
+
+    const reviewRaw = byId('review_link').value.trim();
+    if (reviewRaw && !normalizeHttpUrl(reviewRaw)) {
+      errors.push('Add a complete Airbnb review link, or leave the field blank.');
+      byId('review_link').setAttribute('aria-invalid', 'true');
+      byId('review_link-error').textContent = 'Use a complete link beginning with https://';
+      byId('review_link-error').hidden = false;
+    }
+
+
+    ['food','things'].forEach((category) => {
+      recommendationRecords[category].forEach((item, index) => {
+        if (!recommendationHasContent(item)) return;
+        const nameInput = byId(`recommendation-name-${item.id}`);
+        const mapInput = byId(`recommendation-map-${item.id}`);
+        const label = category === 'food' ? 'food recommendation' : 'activity recommendation';
+        if (!String(item.name || '').trim()) {
+          errors.push(`Add a place name for ${label} ${index + 1}.`);
+          if (nameInput) nameInput.setAttribute('aria-invalid', 'true');
+        }
+        if (!normalizeMapUrl(item.mapUrl)) {
+          errors.push(`Add a valid Google Maps or Apple Maps link for ${label} ${index + 1}.`);
+          if (mapInput) mapInput.setAttribute('aria-invalid', 'true');
+        }
+      });
+    });
+
+    const accessMatches = detectAccessCredentials();
+    if (accessMatches.length) {
+      errors.push('Remove entry codes or other property access credentials before sharing this guide.');
+      const checkinMatch = accessMatches.some((match) => match.field.id === 'checkin_steps');
+      if (checkinMatch) {
+        byId('checkin_steps').setAttribute('aria-invalid', 'true');
+        byId('checkin_steps-error').textContent = 'For guest safety, remove entry codes or access credentials from this public guide.';
+        byId('checkin_steps-error').hidden = false;
+      }
+      accessMatches.forEach((match) => byId(match.field.id).setAttribute('aria-invalid', 'true'));
+    }
+
+    if (!byId('public_acknowledgement').checked) errors.push('Confirm that your guide does not include entry codes or access credentials.');
+
+    if (errors.length) {
+      const list = byId('error-list');
+      errors.forEach((message) => {
+        const item = document.createElement('li');
+        item.textContent = message;
+        list.appendChild(item);
+      });
+      byId('error-summary').hidden = false;
+      byId('error-summary').scrollIntoView({behavior:'smooth', block:'center'});
+    }
+    return errors;
+  }
+
+  async function prepareExportPhotos(){
+    const exports = [];
+    for (let index = 0; index < photoRecords.length; index += 1) {
+      const photo = photoRecords[index];
+      setStatus(`Preparing photo ${index + 1} of ${photoRecords.length}...`);
+      const output = await resizeImageBlob(photo.blob, index === 0 ? 2200 : 1400, index === 0 ? .86 : .82);
+      const fileName = index === 0 ? `cover.${output.extension}` : `photo-${String(index + 1).padStart(2, '0')}.${output.extension}`;
+      exports.push({
+        id:photo.id, fileName, src:`images/${fileName}`, alt:photo.alt || '',
+        width:output.width, height:output.height, blob:output.blob
+      });
+    }
+    return exports;
+  }
+
+  async function prepareExportRecommendations(){
+    const assets = [];
+    const localGuide = {food:[], things:[], tip:byId('local_tip').value.trim()};
+    for (const category of ['food','things']) {
+      const records = recommendationRecords[category].filter(recommendationHasContent);
+      for (let index = 0; index < records.length; index += 1) {
+        const item = records[index];
+        const output = {
+          id:item.id,
+          name:String(item.name || '').trim(),
+          description:String(item.description || '').trim(),
+          mapUrl:normalizeMapUrl(item.mapUrl) || ''
+        };
+        if (item.image && item.image.blob) {
+          setStatus(`Preparing ${category === 'food' ? 'food' : 'activity'} photo ${index + 1} of ${records.length}...`);
+          const resized = await resizeImageBlob(item.image.blob, 1400, .84);
+          const fileName = `place-${category}-${String(index + 1).padStart(2, '0')}.${resized.extension}`;
+          output.image = {id:item.image.id, src:`images/${fileName}`, alt:item.image.alt || `${item.name || 'Place'} recommendation photo`, width:resized.width, height:resized.height};
+          assets.push({fileName, blob:resized.blob});
+        }
+        localGuide[category].push(output);
+      }
+    }
+    return {localGuide, assets};
+  }
+
+  function makeGuideJson(exportPhotos, exportRecommendations){
+    const guide = collectContent();
+    guide.generatedAt = new Date().toISOString();
+    guide.photos = exportPhotos.map(({id, src, alt, width, height}) => ({id, src, alt, width, height}));
+    guide.localGuide = exportRecommendations.localGuide;
+    return guide;
+  }
+
+  function makePublishInstructions(propertyName, fileName){
+    return `HOW TO PUBLISH YOUR GUEST GUIDE WITH NETLIFY
+
+GUIDE
+${propertyName || 'Guest guide'}
+
+YOUR DOWNLOAD PACKAGE
+${fileName || 'your-property-guest-guide-package.zip'}
+
+The package contains two folders:
+
+- PUBLISH-THIS-FOLDER
+  This is the public website. Upload only this folder to Netlify.
+
+- KEEP-FOR-EDITS
+  Keep this private. It lets the builder restore your guide and check whether an included update is available.
+
+FIRST-TIME PUBLISHING
+
+1. Unzip the downloaded package.
+   - Mac: double-click the ZIP.
+   - Windows: right-click the ZIP and choose "Extract All".
+
+2. Open the package and find PUBLISH-THIS-FOLDER.
+   Confirm that it contains:
+   - index.html
+   - guide.json
+   - images/
+
+3. Sign in to Netlify or create an account.
+
+4. Open Netlify Drop:
+   https://app.netlify.com/drop
+
+5. Drag PUBLISH-THIS-FOLDER into the Netlify drop zone.
+   Do not upload the outer package or KEEP-FOR-EDITS.
+
+6. Wait for the deployment to finish.
+   Netlify will provide a live address ending in netlify.app.
+
+7. Open the live link on your phone and test it before sharing it with guests.
+
+IMPORTANT
+
+- Keep the original package somewhere safe. Use it to reopen the guide later.
+- Anyone with the live link can view the public guide.
+- Use a guest Wi-Fi network.
+- Never include door, gate, keypad, lockbox, garage, alarm, or other property access credentials.
+
+YOUR INCLUDED UPDATE
+
+Every $5 purchase includes the first guide download and one updated download within 30 days of payment.
+Import this original package into the builder to use that update. After the included update is used or expires, you can still import the package, edit everything, and create another version for $5.
+
+HOW TO UPDATE THE SAME LIVE GUIDE
+
+1. Return to the Guest Guide Builder.
+2. Choose Open and upload the original guide package ZIP.
+3. Make and preview your changes.
+4. Create the updated guide package.
+5. Unzip the new package.
+6. In Netlify, open the same project.
+7. Open its Deploys or Production deploys area.
+8. Drag the new PUBLISH-THIS-FOLDER into the deploy drop zone.
+9. Netlify will publish the update while keeping the same live link.
+
+TROUBLESHOOTING
+
+- Blank page: make sure index.html is inside PUBLISH-THIS-FOLDER and that this is the folder you uploaded.
+- Missing photos: upload the complete PUBLISH-THIS-FOLDER, including its images folder.
+- Update not recognized: open the original package containing KEEP-FOR-EDITS, not the public folder downloaded from Netlify.
+- Wrong site updated: confirm you are inside the correct Netlify project before redeploying.
+`;
+  }
+
+  function openPublishDialog(){
+    const dialog = byId('publish-dialog');
+    if (!dialog) return;
+    if (typeof dialog.showModal === 'function') dialog.showModal();
+    else dialog.setAttribute('open', '');
+  }
+
+  let qrArtifact = null;
+
+  function buildQrArtifact(rawUrl){
+    const url = normalizeHttpUrl(rawUrl);
+    if (!url) throw new BuilderError('Paste the full live link, including https://.', 'qr_url');
+    if (!window.GuestGuideQR) throw new BuilderError('The QR code tool did not load. Refresh and try again.', 'qr_library');
+    const QRCode = window.GuestGuideQR.QRCode;
+    const levels = window.GuestGuideQR.QRErrorCorrectLevel;
+    const qr = new QRCode(-1, levels.M);
+    qr.addData(url);
+    qr.make();
+    const count = qr.getModuleCount();
+    const quiet = 4;
+    const size = count + quiet * 2;
+    let path = '';
+    for (let row = 0; row < count; row += 1) {
+      for (let col = 0; col < count; col += 1) {
+        if (qr.isDark(row, col)) path += `M${col + quiet} ${row + quiet}h1v1h-1z`;
+      }
+    }
+    const svg = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${size} ${size}" shape-rendering="crispEdges" role="img" aria-label="QR code for guest guide"><rect width="100%" height="100%" fill="#fff"/><path d="${path}" fill="#111"/></svg>`;
+    return {url, qr, count, quiet, size, svg};
+  }
+
+  function generateQrCode(){
+    const error = byId('qr-error');
+    const result = byId('qr-result');
+    const preview = byId('qr-preview');
+    error.textContent = '';
+    try {
+      qrArtifact = buildQrArtifact(byId('published-guide-url').value);
+      preview.innerHTML = qrArtifact.svg;
+      result.hidden = false;
+      setStatus('QR code created. Test it before printing.', 'success');
+    } catch (qrError) {
+      qrArtifact = null;
+      preview.replaceChildren();
+      result.hidden = true;
+      error.textContent = qrError.message || 'The QR code could not be created.';
+    }
+  }
+
+  function downloadQrSvg(){
+    if (!qrArtifact) return generateQrCode();
+    const blob = new Blob([qrArtifact.svg], {type:'image/svg+xml;charset=utf-8'});
+    triggerBlobDownload(blob, `${slugify(byId('property_name').value || 'guest-guide')}-qr-code.svg`);
+  }
+
+  function downloadQrPng(){
+    if (!qrArtifact) return generateQrCode();
+    const canvas = document.createElement('canvas');
+    const target = 1024;
+    const cell = Math.floor(target / qrArtifact.size);
+    const actual = cell * qrArtifact.size;
+    canvas.width = actual;
+    canvas.height = actual;
+    const context = canvas.getContext('2d');
+    context.fillStyle = '#fff';
+    context.fillRect(0, 0, actual, actual);
+    context.fillStyle = '#111';
+    for (let row = 0; row < qrArtifact.count; row += 1) {
+      for (let col = 0; col < qrArtifact.count; col += 1) {
+        if (qrArtifact.qr.isDark(row, col)) context.fillRect((col + qrArtifact.quiet) * cell, (row + qrArtifact.quiet) * cell, cell, cell);
+      }
+    }
+    canvas.toBlob((blob) => {
+      if (blob) triggerBlobDownload(blob, `${slugify(byId('property_name').value || 'guest-guide')}-qr-code.png`);
+    }, 'image/png');
+  }
+
+  function triggerBlobDownload(blob, fileName){
+    const url = URL.createObjectURL(blob);
+    const link = document.createElement('a');
+    link.href = url;
+    link.download = fileName;
+    document.body.appendChild(link);
+    link.click();
+    link.remove();
+    setTimeout(() => URL.revokeObjectURL(url), 30000);
+  }
+
+  function openPaymentDialog(){
+    const dialog = byId('payment-dialog');
+    if (!dialog) return;
+    if (typeof dialog.showModal === 'function') dialog.showModal();
+    else dialog.setAttribute('open', '');
+  }
+
+  function entitlementNextDownload(){
+    return currentEntitlement && currentEntitlement.nextDownload ? currentEntitlement.nextDownload : 'payment_required';
+  }
+
+  function hasDownloadEntitlement(){
+    return ['paid_download','included_update'].includes(entitlementNextDownload()) && Boolean(currentOwnerToken);
+  }
+
+  function formatShortDate(value){
+    const date = value ? new Date(value) : null;
+    if (!date || Number.isNaN(date.getTime())) return '';
+    const options = {month:'long', day:'numeric'};
+    if (date.getFullYear() !== new Date().getFullYear()) options.year = 'numeric';
+    return date.toLocaleDateString([], options);
+  }
+
+  async function refreshEntitlement(){
+    if (!currentOwnerToken || !currentGuideId || location.protocol === 'file:') {
+      currentEntitlement = currentEntitlement || {managed:false, nextDownload:'payment_required', latestVersion:0};
+      updatePaymentState();
+      return currentEntitlement;
+    }
+    try {
+      const response = await fetch('/.netlify/functions/get-guide-entitlement', {
+        method:'POST', headers:{'content-type':'application/json'},
+        body:JSON.stringify({guideId:currentGuideId, ownerToken:currentOwnerToken})
+      });
+      const payload = await response.json().catch(() => ({}));
+      if (!response.ok || !payload.entitlement) throw new Error(payload.error || 'Guide status could not be checked.');
+      currentEntitlement = payload.entitlement;
+    } catch (error) {
+      console.error(error);
+      currentEntitlement = currentEntitlement || {managed:false, nextDownload:'payment_required', latestVersion:0};
+      setStatus('Your guide opened, but its included-update status could not be checked yet.', 'warning');
+    }
+    updatePaymentState();
+    return currentEntitlement;
+  }
+
+  function updateGenerateButtonAvailability(){
+    const button = byId('generate-button');
+    const acknowledgement = byId('public_acknowledgement');
+    if (!button || !acknowledgement) return;
+    button.disabled = !acknowledgement.checked;
+    button.setAttribute('aria-disabled', String(button.disabled));
+  }
+
+  function updatePaymentState(){
+    const next = entitlementNextDownload();
+    const button = byId('generate-button');
+    const note = byId('price-note');
+    if (button) {
+      let label = 'Create guide files · ';
+      let includePrice = true;
+      if (next === 'paid_download') { label = 'Download your guide'; includePrice = false; }
+      else if (next === 'included_update') { label = 'Download included update'; includePrice = false; }
+      else if (restoredFromPackage) label = 'Create updated guide · ';
+      button.replaceChildren(document.createTextNode(label));
+      if (includePrice) {
+        const price = document.createElement('span');
+        price.id = 'cta-price';
+        price.textContent = paymentPrice.label;
+        button.appendChild(price);
+      }
+    }
+    const ids = ['payment-summary-price','header-price','inline-price','inline-price-display','checkout-price'];
+    ids.forEach((id) => { const node = byId(id); if (node) node.textContent = paymentPrice.label; });
+    if (note) {
+      if (next === 'paid_download') note.textContent = 'Payment received. Your guide package is ready to download.';
+      else if (next === 'included_update') {
+        const expiry = formatShortDate(currentEntitlement?.purchase?.updateExpiresAt);
+        note.textContent = `One updated download is included${expiry ? ` until ${expiry}` : ' within 30 days of purchase'}.`;
+      } else if (restoredFromPackage) note.textContent = `Keep editing for free. Creating these updated files is ${paymentPrice.label} and includes one more update within 30 days.`;
+      else note.textContent = `${paymentPrice.label} includes this guide and one updated download within 30 days. Preview and edit for free.`;
+    }
+    updateGenerateButtonAvailability();
+  }
+
+  function saveFeedbackDraft(){
+    try {
+      localStorage.setItem(FEEDBACK_DRAFT_KEY, JSON.stringify({
+        name:byId('feedback_name').value.trim(),
+        email:byId('feedback_email').value.trim(),
+        consent:byId('feedback_consent').checked
+      }));
+    } catch (error) {}
+  }
+
+  function restoreFeedbackDraft(){
+    try {
+      const saved = JSON.parse(localStorage.getItem(FEEDBACK_DRAFT_KEY) || '{}');
+      byId('feedback_name').value = typeof saved.name === 'string' ? saved.name : '';
+      byId('feedback_email').value = typeof saved.email === 'string' ? saved.email : '';
+      byId('feedback_consent').checked = Boolean(saved.consent);
+    } catch (error) {}
+  }
+
+  function resetFeedbackFormState(){
+    qrArtifact = null;
+    byId('published-guide-url').value = '';
+    byId('qr-error').textContent = '';
+    byId('qr-result').hidden = true;
+    byId('qr-preview').replaceChildren();
+    ['feedback_name','feedback_email','feedback_consent'].forEach((id) => { byId(id).disabled = false; });
+    byId('feedback-error').textContent = '';
+    byId('feedback-saved').hidden = true;
+    const button = byId('save-feedback-button');
+    button.disabled = false;
+    button.textContent = 'Share my contact details';
+  }
+
+  function validEmail(value){
+    return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(String(value || '').trim());
+  }
+
+  function getCurrentPaymentSession(){
+    return currentPaymentSessionId || '';
+  }
+
+  async function saveFeedbackContact(){
+    const consent = byId('feedback_consent').checked;
+    const name = byId('feedback_name').value.trim();
+    const email = byId('feedback_email').value.trim();
+    const error = byId('feedback-error');
+    const saved = byId('feedback-saved');
+    const button = byId('save-feedback-button');
+    error.textContent = '';
+    saved.hidden = true;
+    byId('feedback_email').setAttribute('aria-invalid', 'false');
+    if (!consent) {
+      error.textContent = 'Check the permission box before sharing your contact details.';
+      return;
+    }
+    if (!validEmail(email)) {
+      error.textContent = 'Add a valid email for product feedback.';
+      byId('feedback_email').setAttribute('aria-invalid', 'true');
+      byId('feedback_email').focus();
+      return;
+    }
+    const sessionId = getCurrentPaymentSession();
+    if (!sessionId) {
+      error.textContent = 'We could not connect this feedback form to your payment. Your guide is unaffected.';
+      return;
+    }
+    saveFeedbackDraft();
+    button.disabled = true;
+    button.textContent = 'Saving...';
+    try {
+      const response = await fetch('/.netlify/functions/save-feedback-contact', {
+        method:'POST',
+        headers:{'content-type':'application/json'},
+        body:JSON.stringify({sessionId, guideId:currentGuideId, name, email, consent:true})
+      });
+      const payload = await response.json().catch(() => ({}));
+      if (!response.ok || !payload.saved) throw new BuilderError(payload.error || 'Your feedback contact could not be saved.', 'feedback_save');
+      saved.hidden = false;
+      button.textContent = 'Contact details shared';
+      byId('feedback_name').disabled = true;
+      byId('feedback_email').disabled = true;
+      byId('feedback_consent').disabled = true;
+    } catch (feedbackError) {
+      console.error(feedbackError);
+      error.textContent = feedbackError.message || 'Your feedback contact could not be saved.';
+      button.disabled = false;
+      button.textContent = 'Share my contact details';
+    }
+  }
+
+  async function beginCheckout(){
+    saveDraft();
+    const button = byId('checkout-button');
+    const error = byId('status');
+    button.disabled = true;
+    button.textContent = 'Opening secure checkout...';
+    try {
+      const response = await fetch('/.netlify/functions/create-checkout-session', {
+        method:'POST',
+        headers:{'content-type':'application/json'},
+        body:JSON.stringify({guideId:currentGuideId, ownerToken:currentOwnerToken || ''})
+      });
+      const payload = await response.json().catch(() => ({}));
+      if (!response.ok || !payload.url) throw new BuilderError(payload.error || 'Secure checkout could not be opened.', 'checkout_create');
+      window.location.assign(payload.url);
+    } catch (checkoutError) {
+      console.error(checkoutError);
+      setStatus(checkoutError.message || 'Secure checkout could not be opened. Please try again.', 'error');
+      button.disabled = false;
+      button.replaceChildren(document.createTextNode('Pay '));
+      const price = document.createElement('span');
+      price.id = 'checkout-price';
+      price.textContent = paymentPrice.label;
+      button.append(price, document.createTextNode(' and create guide'));
+    }
+  }
+
+  async function verifyPaymentReturn(){
+    const params = new URLSearchParams(window.location.search);
+    const state = params.get('payment');
+    const sessionId = params.get('session_id');
+    if (state === 'cancelled') {
+      setStatus('Checkout closed. Your draft is safe.', 'warning');
+      history.replaceState({}, '', window.location.pathname + window.location.hash);
+      return;
+    }
+    if (state !== 'success' || !sessionId) return;
+    setStatus('Confirming your payment...');
+    try {
+      const response = await fetch('/.netlify/functions/verify-checkout-session', {
+        method:'POST',
+        headers:{'content-type':'application/json'},
+        body:JSON.stringify({sessionId, guideId:currentGuideId})
+      });
+      const payload = await response.json().catch(() => ({}));
+      if (!response.ok || !payload.paid) throw new BuilderError(payload.error || 'Payment could not be confirmed.', 'checkout_verify');
+      currentOwnerToken = payload.ownerToken || currentOwnerToken;
+      currentEntitlement = payload.entitlement || currentEntitlement;
+      currentPaymentSessionId = sessionId;
+      saveDraft();
+      history.replaceState({}, '', window.location.pathname + window.location.hash);
+      updatePaymentState();
+      setStatus('Payment received. Creating your guide...');
+      await downloadGuideFiles();
+    } catch (paymentError) {
+      console.error(paymentError);
+      setStatus(paymentError.message || 'We could not confirm the payment. Please contact support with your Stripe receipt.', 'error');
+    }
+  }
+
+  async function requestGuideDownload(){
+    updateGenerateButtonAvailability();
+    const errors = validateForDownload();
+    if (errors.length) {
+      setStatus('A few details need your attention before you create the guide.', 'error');
+      return;
+    }
+    if (hasDownloadEntitlement()) {
+      await downloadGuideFiles();
+      return;
+    }
+    openPaymentDialog();
+  }
+
+  async function claimCurrentDownload(){
+    if (!currentOwnerToken) throw new BuilderError('Payment is required before creating the downloadable guide.', 'payment_required');
+    const claimId = randomId();
+    const response = await fetch('/.netlify/functions/claim-guide-download', {
+      method:'POST', headers:{'content-type':'application/json'},
+      body:JSON.stringify({guideId:currentGuideId, ownerToken:currentOwnerToken, claimId})
+    });
+    const payload = await response.json().catch(() => ({}));
+    if (!response.ok || !payload.allowed) {
+      if (payload.code === 'payment_required') {
+        currentEntitlement = {managed:true, nextDownload:'payment_required', latestVersion:currentEntitlement?.latestVersion || 0};
+        updatePaymentState();
+      }
+      throw new BuilderError(payload.error || 'The download could not be confirmed.', payload.code || 'download_claim');
+    }
+    currentEntitlement = payload.entitlement || currentEntitlement;
+    return payload;
+  }
+
+  async function downloadGuideFiles(){
+    const button = byId('generate-button');
+    let completed = false;
+    button.disabled = true;
+    try {
+      setStatus('Preparing your photos and guide...');
+      const exportPhotos = await prepareExportPhotos();
+      const exportRecommendations = await prepareExportRecommendations();
+      setStatus('Confirming this download...');
+      const claim = await claimCurrentDownload();
+      const guide = makeGuideJson(exportPhotos, exportRecommendations);
+      guide.version = claim.version || ((currentEntitlement?.latestVersion || 0) + 1);
+      const html = await buildHtml(guide);
+      const zip = new JSZip();
+      const downloadFileName = `${slugify(guide.property.name)}-guest-guide-package.zip`;
+      const publishFolder = zip.folder('PUBLISH-THIS-FOLDER');
+      publishFolder.file('index.html', html);
+      publishFolder.file('guide.json', JSON.stringify(guide, null, 2));
+      const images = publishFolder.folder('images');
+      exportPhotos.forEach((photo) => images.file(photo.fileName, photo.blob));
+      exportRecommendations.assets.forEach((asset) => images.file(asset.fileName, asset.blob));
+      if (!exportPhotos.length) images.file('README.txt', 'This guide was created without photos. Add photos through the Guest Guide Builder and download again.');
+
+      const privateBackup = JSON.parse(JSON.stringify(guide));
+      privateBackup.builderAccess = {
+        ownerToken:currentOwnerToken,
+        entitlement:currentEntitlement || null,
+        paymentSessionId:currentPaymentSessionId || '',
+        savedAt:new Date().toISOString()
+      };
+      privateBackup.lifecycle = {status:'managed_edit', savedAt:new Date().toISOString()};
+      zip.folder('KEEP-FOR-EDITS').file('guide-backup.json', JSON.stringify(privateBackup, null, 2));
+      zip.file('HOW-TO-PUBLISH.txt', makePublishInstructions(guide.property.name, downloadFileName));
+
+      setStatus('Creating your download package...');
+      const blob = await zip.generateAsync({type:'blob', compression:'DEFLATE', compressionOptions:{level:6}});
+      const url = URL.createObjectURL(blob);
+      const link = document.createElement('a');
+      link.href = url;
+      link.download = downloadFileName;
+      document.body.appendChild(link);
+      link.click();
+      link.remove();
+      setTimeout(() => URL.revokeObjectURL(url), 30000);
+      restoredFromPackage = true;
+      saveDraft();
+      updatePaymentState();
+      setStatus(claim.mode === 'included_update' ? 'Your included update is ready. Publishing steps are open.' : 'Your guide is ready. Publishing steps are open.', 'success');
+      completed = true;
+      openPublishDialog();
+    } catch (error) {
+      console.error(error);
+      if (error.code === 'payment_required') openPaymentDialog();
+      setStatus(error.message || 'We could not create the guide files. Please try again.', 'error');
+    } finally {
+      if (completed) byId('public_acknowledgement').checked = false;
+      updateGenerateButtonAvailability();
+    }
+  }
+
+  async function openFullPreview(){
+    const previewWindow = window.open('about:blank', '_blank');
+    if (!previewWindow) {
+      setStatus('Your browser blocked the preview. Allow popups for this page, then try again.', 'error');
+      return;
+    }
+    previewWindow.opener = null;
+    try {
+      previewWindow.document.title = 'Building preview...';
+      const guide = collectContent();
+      guide.photos = photoRecords.map((photo) => ({src:photo.previewUrl, alt:photo.alt || ''}));
+      const html = await buildHtml(guide);
+      previewWindow.document.open();
+      previewWindow.document.write(html);
+      previewWindow.document.close();
+      setStatus('Preview opened in a new tab.', 'success');
+    } catch (error) {
+      previewWindow.close();
+      setStatus(error.message || 'We could not open the preview.', 'error');
+    }
+  }
+
+  function openDatabase(){
+    return new Promise((resolve, reject) => {
+      if (!window.indexedDB) return reject(new Error('IndexedDB unavailable'));
+      const request = indexedDB.open(DB_NAME, 1);
+      request.onupgradeneeded = () => {
+        const db = request.result;
+        if (!db.objectStoreNames.contains(DB_STORE)) db.createObjectStore(DB_STORE, {keyPath:'id'});
+      };
+      request.onsuccess = () => resolve(request.result);
+      request.onerror = () => reject(request.error || new Error('Could not open draft photo storage'));
+    });
+  }
+
+  async function persistPhotos(){
+    try {
+      const db = await openDatabase();
+      await new Promise((resolve, reject) => {
+        const transaction = db.transaction(DB_STORE, 'readwrite');
+        const store = transaction.objectStore(DB_STORE);
+        store.clear();
+        photoRecords.forEach((photo) => {
+          store.put({
+            id:photo.id, kind:'property', originalName:photo.originalName, originalSize:photo.originalSize,
+            blob:photo.blob, width:photo.width, height:photo.height, extension:photo.extension, alt:photo.alt || ''
+          });
+        });
+        ['food','things'].forEach((category) => recommendationRecords[category].forEach((item) => {
+          const image = item.image;
+          if (!image || !image.blob) return;
+          store.put({id:image.id, kind:'recommendation', originalName:image.originalName, originalSize:image.originalSize,
+            blob:image.blob, width:image.width, height:image.height, extension:image.extension, alt:image.alt || ''});
+        }));
+        transaction.oncomplete = resolve;
+        transaction.onerror = () => reject(transaction.error);
+      });
+      db.close();
+    } catch (error) {
+      if (!storageWarningShown) {
+        storageWarningShown = true;
+        setStatus('Your text is saved, but this browser could not save draft photos.', 'warning');
+      }
+    }
+  }
+
+  async function loadPersistedAssetMap(){
+    try {
+      const db = await openDatabase();
+      const records = await new Promise((resolve, reject) => {
+        const transaction = db.transaction(DB_STORE, 'readonly');
+        const request = transaction.objectStore(DB_STORE).getAll();
+        request.onsuccess = () => resolve(request.result || []);
+        request.onerror = () => reject(request.error);
+      });
+      db.close();
+      return new Map(records.map((record) => [record.id, record]));
+    } catch (error) {
+      return new Map();
+    }
+  }
+
+  function hydratePropertyPhotos(order, assetMap){
+    return (order || []).map((metadata) => {
+      const stored = assetMap.get(metadata.id);
+      if (!stored || !stored.blob) return null;
+      return {...stored, alt:metadata.alt || stored.alt || '', previewUrl:URL.createObjectURL(stored.blob)};
+    }).filter(Boolean);
+  }
+
+  async function clearPersistedPhotos(){
+    try {
+      const db = await openDatabase();
+      await new Promise((resolve, reject) => {
+        const transaction = db.transaction(DB_STORE, 'readwrite');
+        const request = transaction.objectStore(DB_STORE).clear();
+        request.onsuccess = resolve;
+        request.onerror = () => reject(request.error);
+      });
+      db.close();
+    } catch (error) {}
+  }
+
+  function scheduleDraftSave(){
+    clearTimeout(draftTimer);
+    setSaveState('Saving...');
+    draftTimer = setTimeout(saveDraft, 420);
+  }
+
+  function saveDraft(){
+    try {
+      const draft = buildDraftData();
+      localStorage.setItem(DRAFT_KEY, JSON.stringify(draft));
+      setSaveState(`Saved ${new Date().toLocaleTimeString([], {hour:'numeric', minute:'2-digit'})}`);
+    } catch (error) {
+      setSaveState('Autosave unavailable');
+    }
+  }
+
+  async function restoreSavedDraft(){
+    try {
+      const raw = localStorage.getItem(DRAFT_KEY);
+      if (!raw) return false;
+      const draft = JSON.parse(raw);
+      const fromLanding = new URLSearchParams(window.location.search).get('from') === 'landing';
+      const lifecycleStatus = draft?.lifecycle?.status || 'unpaid_draft';
+      if (fromLanding && lifecycleStatus !== 'unpaid_draft') return false;
+      restoredFromPackage = lifecycleStatus === 'managed_edit';
+      restoreForm(draft);
+      clearPhotoRecords();
+      photoRecords = await loadPersistedPhotos(draft.photos || []);
+      renderPhotoList();
+      setSaveState('Draft restored');
+      return true;
+    } catch (error) {
+      return false;
+    }
+  }
+
+  async function restoreFromZip(file){
+    let zip;
+    try {
+      zip = await JSZip.loadAsync(file);
+    } catch (error) {
+      throw new BuilderError('The ZIP could not be opened. Upload a ZIP created by this builder.', 'zip_open');
+    }
+
+    const privateEntry = zip.file('KEEP-FOR-EDITS/guide-backup.json');
+    const publishedEntry = zip.file('PUBLISH-THIS-FOLDER/guide.json');
+    const guideEntry = privateEntry || publishedEntry || zip.file('guide.json');
+    const assetPrefix = privateEntry || publishedEntry ? 'PUBLISH-THIS-FOLDER/' : '';
+    if (guideEntry) {
+      let guide;
+      try { guide = JSON.parse(await guideEntry.async('string')); }
+      catch (error) { throw new BuilderError('guide.json inside the ZIP is damaged.', 'guide_json'); }
+      restoreForm(guide);
+      clearPhotoRecords();
+      const restored = [];
+      for (const photo of Array.isArray(guide.photos) ? guide.photos : []) {
+        const entry = photo && photo.src ? zip.file(assetPrefix + photo.src) : null;
+        if (!entry) continue;
+        const rawBlob = await entry.async('blob');
+        const extension = (photo.src || '').split('.').pop().toLowerCase() || 'webp';
+        const mimeType = extension === 'png' ? 'image/png' : extension === 'jpg' || extension === 'jpeg' ? 'image/jpeg' : 'image/webp';
+        const blob = new Blob([rawBlob], {type:mimeType});
+        restored.push({
+          id:photo.id || randomId(), originalName:(photo.src || '').split('/').pop() || 'photo', originalSize:blob.size,
+          blob, width:photo.width || 0, height:photo.height || 0,
+          extension, alt:photo.alt || '', previewUrl:URL.createObjectURL(blob)
+        });
+      }
+      photoRecords = restored;
+      let missingRecommendationImages = 0;
+      for (const category of ['food','things']) {
+        for (const item of recommendationRecords[category]) {
+          const imageMeta = item.image;
+          if (!imageMeta || !imageMeta.src) continue;
+          const entry = zip.file(assetPrefix + imageMeta.src);
+          if (!entry) { missingRecommendationImages += 1; item.image = null; continue; }
+          const rawBlob = await entry.async('blob');
+          const extension = (imageMeta.src || '').split('.').pop().toLowerCase() || 'webp';
+          const mimeType = extension === 'png' ? 'image/png' : extension === 'jpg' || extension === 'jpeg' ? 'image/jpeg' : 'image/webp';
+          const blob = new Blob([rawBlob], {type:mimeType});
+          item.image = {id:imageMeta.id || randomId(), originalName:(imageMeta.src || '').split('/').pop() || 'place-photo', originalSize:blob.size,
+            blob, width:imageMeta.width || 0, height:imageMeta.height || 0, extension, alt:imageMeta.alt || '', previewUrl:URL.createObjectURL(blob)};
+        }
+      }
+      renderRecommendationEditors();
+      restoredFromPackage = true;
+      await refreshEntitlement();
+      return {legacy:false, missingPhotos:(guide.photos || []).length - restored.length + missingRecommendationImages};
+    }
+
+    const configEntry = zip.file('config.js');
+    if (configEntry) return restoreLegacyZip(zip, await configEntry.async('string'));
+    throw new BuilderError('This file does not contain a saved guide. Upload the original guide package ZIP.', 'guide_missing');
+  }
+
+  async function restoreLegacyZip(zip, configText){
+    if (!window.Papa) throw new BuilderError('This older guide needs papaparse.min.js beside the builder for migration.', 'legacy_dependency');
+    const themeMatch = configText.match(/const\s+GUIDE_THEME\s*=\s*("(?:\\.|[^"\\])*")/);
+    const csvMatch = configText.match(/const\s+DEMO_CSV\s*=\s*("(?:\\.|[^"\\])*")/);
+    if (!csvMatch) throw new BuilderError('This older guide could not be migrated automatically.', 'legacy_parse');
+    const csvText = JSON.parse(csvMatch[1]);
+    const parsed = Papa.parse(csvText.trim(), {header:true, skipEmptyLines:true});
+    const map = {};
+    parsed.data.forEach((row) => { if (row.key) map[String(row.key).trim()] = String(row.value || '').trim(); });
+    const guide = {
+      schemaVersion:SCHEMA_VERSION, builderVersion:BUILDER_VERSION, guideId:randomId(),
+      theme:themeMatch ? JSON.parse(themeMatch[1]) : DEFAULT_THEME,
+      property:{name:map.property_name || '', tagline:map.tagline || '', hostNames:map.host_names || '', responseNote:map.host_response_note || ''},
+      wifi:{name:map.wifi_name || '', password:map.wifi_password || ''},
+      checkIn:{time:map.checkin_time || '', steps:String(map.checkin_steps || '').split('|').filter(Boolean)},
+      checkOut:{time:map.checkout_time || '', steps:String(map.checkout_steps || '').split('|').filter(Boolean)},
+      houseRules:String(map.house_rules || '').split('|').filter(Boolean),
+      localGuide:{
+        food:parseRecommendations(String(map.local_food || '').split('|').join('\n')).map((item) => ({...item, id:randomId(), mapUrl:''})),
+        things:parseRecommendations(String(map.local_things || '').split('|').join('\n')).map((item) => ({...item, id:randomId(), mapUrl:''})),
+        tip:map.local_tip || ''
+      },
+      reviewUrl:map.review_link || '', settings:{allowIndexing:false}, photos:[]
+    };
+    restoreForm(guide);
+    restoredFromPackage = true;
+    currentOwnerToken = '';
+    currentEntitlement = {managed:false, nextDownload:'payment_required', latestVersion:0};
+    clearPhotoRecords();
+    const names = ['images/hero.jpg'];
+    for (let i = 1; i <= 99; i += 1) names.push(`images/gallery-${i}.jpg`);
+    for (const name of names) {
+      const entry = zip.file(name);
+      if (!entry) continue;
+      const rawBlob = await entry.async('blob');
+      const blob = new Blob([rawBlob], {type:'image/jpeg'});
+      photoRecords.push({
+        id:randomId(), originalName:name.split('/').pop(), originalSize:blob.size,
+        blob, width:0, height:0, extension:'jpg', alt:'', previewUrl:URL.createObjectURL(blob)
+      });
+    }
+    return {legacy:true, missingPhotos:0};
+  }
+
+  async function restoreFromJson(file){
+    let guide;
+    try { guide = JSON.parse(await file.text()); }
+    catch (error) { throw new BuilderError('The JSON file could not be read.', 'json_open'); }
+    restoreForm(guide);
+    restoredFromPackage = true;
+    clearPhotoRecords();
+    await refreshEntitlement();
+    return {legacy:false, textOnly:true};
+  }
+
+  async function handleRestoreFile(file){
+    if (!file) return;
+    setStatus('Opening your saved guide...');
+    try {
+      const result = file.name.toLowerCase().endsWith('.json') ? await restoreFromJson(file) : await restoreFromZip(file);
+      renderPhotoList();
+      updatePaymentState();
+      resetFeedbackFormState();
+      await persistPhotos();
+      saveDraft();
+      updatePreviewSoon();
+      if (result.textOnly) setStatus('Your text and settings are back. Open the original ZIP to restore photos too.', 'warning');
+      else if (result.legacy) setStatus('Welcome back. Your older guide is ready to edit.');
+      else if (result.missingPhotos) setStatus(`Guide restored, but ${result.missingPhotos} photo files were missing from the ZIP.`, 'warning');
+      else setStatus('Welcome back. Your guide is ready to edit.', 'success');
+    } catch (error) {
+      console.error(error);
+      setStatus(error.message || 'We could not open that guide file.', 'error');
+    } finally {
+      byId('restore-input').value = '';
+    }
+  }
+
+  async function startNewGuide(){
+    const hasContent = Boolean(byId('property_name').value.trim() || photoRecords.length || recommendationRecords.food.length || recommendationRecords.things.length);
+    if (hasContent && !window.confirm('Clear this draft and start a new guide?')) return;
+    FIELD_SCHEMA.forEach((field) => { byId(field.id).value = ''; });
+    byId('allow_indexing').checked = false;
+    byId('public_acknowledgement').checked = false;
+    selectedTheme = DEFAULT_THEME;
+    currentGuideId = randomId();
+    currentOwnerToken = '';
+    currentEntitlement = null;
+    currentPaymentSessionId = '';
+    restoredFromPackage = false;
+    document.querySelectorAll('input[name="theme"]').forEach((input) => { input.checked = input.value === selectedTheme; });
+    clearPhotoRecords();
+    clearRecommendationImages();
+    recommendationRecords = {food:[], things:[]};
+    renderPhotoList();
+    renderRecommendationEditors();
+    localStorage.removeItem(DRAFT_KEY);
+    await clearPersistedPhotos();
+    clearValidation();
+    setSaveState('New draft ready');
+    updatePaymentState();
+    resetFeedbackFormState();
+    setStatus('A fresh guide is ready.', 'success');
+    updatePreviewSoon();
+  }
+
+  function bindEvents(){
+    form.addEventListener('input', (event) => {
+      if (event.target.name === 'theme') selectedTheme = event.target.value;
+      scheduleDraftSave();
+      updatePreviewSoon();
+      if (event.target.id === 'review_link' || event.target.id === 'checkin_steps') clearValidation();
+    });
+    form.addEventListener('change', (event) => {
+      if (event.target.name === 'theme') selectedTheme = event.target.value;
+      if (event.target.id === 'public_acknowledgement') {
+        clearValidation();
+        updateGenerateButtonAvailability();
+      }
+      scheduleDraftSave();
+      updatePreviewSoon();
+    });
+    form.addEventListener('submit', (event) => {
+      event.preventDefault();
+      requestGuideDownload();
+    });
+
+    const dropzone = byId('dropzone');
+    const photoInput = byId('photo-input');
+    dropzone.addEventListener('click', () => photoInput.click());
+    ['dragover','dragenter'].forEach((name) => dropzone.addEventListener(name, (event) => {
+      event.preventDefault();
+      dropzone.classList.add('drag');
+    }));
+    ['dragleave','drop'].forEach((name) => dropzone.addEventListener(name, (event) => {
+      event.preventDefault();
+      dropzone.classList.remove('drag');
+    }));
+    dropzone.addEventListener('drop', (event) => addPhotos(event.dataTransfer.files));
+    photoInput.addEventListener('change', (event) => {
+      addPhotos(event.target.files);
+      photoInput.value = '';
+    });
+
+    byId('restore-guide-button').addEventListener('click', () => byId('restore-input').click());
+    byId('restore-input').addEventListener('change', (event) => handleRestoreFile(event.target.files[0]));
+    byId('new-guide-button').addEventListener('click', startNewGuide);
+    byId('photo-reorder-toggle').addEventListener('click', () => {
+      const panel = byId('photo-reorder-panel');
+      const open = panel.hidden;
+      panel.hidden = !open;
+      byId('photo-reorder-toggle').setAttribute('aria-expanded', String(open));
+      if (open) requestAnimationFrame(() => panel.querySelector('button:not(:disabled)')?.focus());
+    });
+    byId('photo-reorder-done').addEventListener('click', () => {
+      byId('photo-reorder-panel').hidden = true;
+      byId('photo-reorder-toggle').setAttribute('aria-expanded', 'false');
+      byId('photo-reorder-toggle').focus();
+    });
+    document.querySelectorAll('[data-add-recommendation]').forEach((button) => button.addEventListener('click', () => addRecommendation(button.dataset.addRecommendation)));
+    byId('full-preview-button').addEventListener('click', openFullPreview);
+    byId('payment-form').addEventListener('submit', (event) => {
+      event.preventDefault();
+      beginCheckout();
+    });
+    byId('cancel-payment-button').addEventListener('click', () => byId('payment-dialog').close());
+    ['feedback_name','feedback_email','feedback_consent'].forEach((id) => {
+      byId(id).addEventListener('input', saveFeedbackDraft);
+      byId(id).addEventListener('change', saveFeedbackDraft);
+    });
+    byId('save-feedback-button').addEventListener('click', saveFeedbackContact);
+    byId('payment-dialog').addEventListener('click', (event) => {
+      if (event.target === event.currentTarget) event.currentTarget.close();
+    });
+    byId('open-netlify-button').addEventListener('click', () => {
+      window.open('https://app.netlify.com/drop', '_blank', 'noopener,noreferrer');
+    });
+    byId('generate-qr-button').addEventListener('click', generateQrCode);
+    byId('download-qr-png').addEventListener('click', downloadQrPng);
+    byId('download-qr-svg').addEventListener('click', downloadQrSvg);
+    byId('published-guide-url').addEventListener('keydown', (event) => {
+      if (event.key === 'Enter') { event.preventDefault(); generateQrCode(); }
+    });
+    byId('publish-dialog').addEventListener('click', (event) => {
+      if (event.target === event.currentTarget) event.currentTarget.close();
+    });
+
+    document.querySelectorAll('[data-preview-size]').forEach((button) => {
+      button.addEventListener('click', () => {
+        const desktop = button.dataset.previewSize === 'desktop';
+        previewShell.classList.toggle('desktop', desktop);
+        document.querySelectorAll('[data-preview-size]').forEach((item) => {
+          const active = item === button;
+          item.classList.toggle('active', active);
+          item.setAttribute('aria-pressed', String(active));
+        });
+      });
+    });
+
+    document.addEventListener('keydown', (event) => {
+      if (event.key !== 'Escape') return;
+      const eventTrigger = event.target && event.target.closest ? event.target.closest('.tooltip-trigger') : null;
+      const activeTrigger = document.activeElement && document.activeElement.closest
+        ? document.activeElement.closest('.tooltip-trigger')
+        : null;
+      const trigger = eventTrigger || activeTrigger;
+      if (trigger) {
+        trigger.classList.add('tooltip-dismissed');
+        event.stopPropagation();
+      }
+    });
+    document.addEventListener('pointerout', (event) => {
+      const trigger = event.target.closest && event.target.closest('.tooltip-trigger');
+      if (trigger && !trigger.contains(event.relatedTarget)) trigger.classList.remove('tooltip-dismissed');
+    });
+    document.addEventListener('focusout', (event) => {
+      const trigger = event.target.closest && event.target.closest('.tooltip-trigger');
+      if (trigger && !trigger.contains(event.relatedTarget)) trigger.classList.remove('tooltip-dismissed');
+    });
+    window.addEventListener('beforeunload', () => { photoRecords.forEach(revokePhoto); clearRecommendationImages(); });
+  }
+
+
+  function initializeSectionNavigation(){
+    const links = Array.from(document.querySelectorAll('[data-section-link]'));
+    const sections = Array.from(document.querySelectorAll('[data-builder-section]'));
+    if (!links.length || !sections.length || !('IntersectionObserver' in window)) return;
+    const observer = new IntersectionObserver((entries) => {
+      const visible = entries
+        .filter((entry) => entry.isIntersecting)
+        .sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
+      if (!visible) return;
+      links.forEach((link) => {
+        const active = link.getAttribute('href') === `#${visible.target.id}`;
+        link.classList.toggle('active', active);
+        if (active) link.setAttribute('aria-current', 'step'); else link.removeAttribute('aria-current');
+      });
+    }, {rootMargin:'-18% 0px -65% 0px', threshold:[0,.15,.35]});
+    sections.forEach((section) => observer.observe(section));
+  }
+
+  async function initialize(){
+    renderThemePicker();
+    initializeSectionNavigation();
+    bindEvents();
+    const params = new URLSearchParams(window.location.search);
+    const fromLanding = params.get('from') === 'landing';
+    const restored = await restoreSavedDraft();
+    if (!restored) { renderPhotoList(); renderRecommendationEditors(); }
+    else if (restoredFromPackage) await refreshEntitlement();
+    restoreFeedbackDraft();
+    await loadPaymentConfig();
+    updatePaymentState();
+    updatePreviewSoon();
+    await verifyPaymentReturn();
+    if (fromLanding && !params.get('payment')) {
+      history.replaceState({}, '', window.location.pathname + window.location.hash);
+      if (restored && !restoredFromPackage) setStatus('Your draft is ready.', 'success');
+    }
+    if (location.protocol === 'file:') console.info('Local file preview mode. Deploy the builder to Netlify before testing payments.');
+  }
+
+  initialize();
+})();
+</script>
+</body>
+</html>

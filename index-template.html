@@ -1,0 +1,856 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="{{ROBOTS}}">
+<meta name="description" content="{{META_DESCRIPTION}}">
+<meta property="og:type" content="website">
+<meta property="og:title" content="{{OG_TITLE}}">
+<meta property="og:description" content="{{OG_DESCRIPTION}}">
+<!-- OG_IMAGE -->
+<meta name="theme-color" content="{{THEME_COLOR}}">
+<!-- FAVICON -->
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' data: blob:; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; script-src 'nonce-{{CSP_NONCE}}'; connect-src 'none'; object-src 'none'; base-uri 'none'; form-action 'none'">
+<title>{{PAGE_TITLE}}</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<!-- FONT-LINK-START -->
+<link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:opsz,wght@6..12,400;6..12,500;6..12,600;6..12,700;6..12,800&family=IBM+Plex+Mono:wght@500&display=swap" rel="stylesheet">
+<!-- FONT-LINK-END -->
+<style>
+  /* THEME-TOKENS-START */
+  :root{
+    --ink:#183B45;
+    --ink-soft:#526A70;
+    --bg:#F6FAF8;
+    --panel:#FFFFFF;
+    --panel-soft:#EDF5F2;
+    --line:#D4E3E0;
+    --accent:#2F6F78;
+    --accent-soft:#DDEEEE;
+    --warm:#6D9F8A;
+    --warm-soft:#E7F1EB;
+    --font-display:'Nunito Sans', sans-serif;
+    --font-body:'Nunito Sans', sans-serif;
+    --font-mono:'IBM Plex Mono', monospace;
+    --radius:18px;
+    --shadow:0 12px 34px rgba(35,59,62,.07);
+  }
+  /* THEME-TOKENS-END */
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;background:var(--bg);color:var(--ink);font-family:var(--font-body);
+    font-size:15.5px;line-height:1.65;-webkit-font-smoothing:antialiased;
+  }
+  button,a{font:inherit;}
+  button:focus-visible,a:focus-visible,summary:focus-visible{outline:3px solid var(--accent);outline-offset:3px;}
+  .site-shell{max-width:800px;margin:0 auto;min-height:100vh;background:var(--bg);}
+  nav{
+    position:sticky;top:0;z-index:30;display:flex;padding:0 18px;
+    background:color-mix(in srgb,var(--bg) 94%,transparent);backdrop-filter:blur(12px);
+    border-bottom:1px solid var(--line);overflow-x:auto;
+  }
+  nav[hidden]{display:none;}
+  nav a{
+    flex:1;min-width:max-content;padding:15px 10px 12px;text-align:center;color:var(--ink-soft);
+    font-size:12px;font-weight:600;text-decoration:none;border-bottom:3px solid transparent;
+  }
+  nav a:hover{color:var(--ink);}
+  nav a.active{color:var(--accent);border-color:var(--accent);}
+  .hero{position:relative;overflow:hidden;}
+  .hero-content{position:relative;z-index:2;}
+  .hero-cover{position:relative;overflow:hidden;background:var(--accent-soft);}
+  .hero-cover[hidden]{display:none;}
+  .hero-cover img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;}
+  .hero .eyebrow{
+    margin:0 0 12px;color:var(--accent);font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;
+  }
+  .hero h1{
+    margin:0 0 12px;font-family:var(--font-display);font-size:clamp(38px,7.4vw,58px);
+    line-height:1.06;font-weight:600;letter-spacing:-.025em;
+  }
+  .hero .tagline{max-width:600px;margin:0;color:var(--ink-soft);font-size:17px;line-height:1.55;}
+  .hero .host-note{margin:16px 0 0;color:var(--ink-soft);font-size:14px;}
+  main{display:block;}
+  section{padding:52px 34px 4px;scroll-margin-top:62px;}
+  section[hidden]{display:none;}
+  .section-top{margin-bottom:22px;}
+  .section-marker{height:4px;margin-bottom:15px;border-radius:999px;}
+  .section-marker span{display:none;}
+  .section-heading{
+    max-width:650px;margin:0;font-family:var(--font-display);font-size:30px;line-height:1.22;font-weight:600;letter-spacing:-.018em;
+  }
+  .card{
+    margin-bottom:16px;padding:22px 23px;border:1px solid color-mix(in srgb,var(--line) 82%,transparent);
+    border-radius:var(--radius);background:var(--panel);box-shadow:var(--shadow);
+  }
+  .card[hidden],.content-group[hidden]{display:none;}
+  .content-label{
+    margin:0 0 15px;color:var(--ink-soft);font-size:12px;font-weight:700;letter-spacing:.025em;
+  }
+  .wifi-grid{display:grid;grid-template-columns:1fr auto;gap:18px;align-items:end;}
+  .wifi-item + .wifi-item{margin-top:16px;}
+  .wifi-item .label{margin:0 0 4px;color:var(--ink-soft);font-size:11.5px;font-weight:600;}
+  .wifi-item .value{margin:0;font-family:var(--font-mono);font-size:15px;overflow-wrap:anywhere;}
+  .copy-button{
+    min-height:42px;padding:10px 13px;border:0;border-radius:11px;background:var(--accent-soft);color:var(--accent);
+    font-size:12.5px;font-weight:700;cursor:pointer;
+  }
+  .copy-button:hover{filter:brightness(.98);}
+  .copy-status{min-height:1.2em;margin:9px 0 0;color:var(--accent);font-size:12px;}
+  .gallery{display:grid;margin:0 0 18px;}
+  .gallery[hidden]{display:none;}
+  .gallery img{display:block;width:100%;object-fit:cover;background:var(--accent-soft);}
+  ol.steps{list-style:none;margin:0;padding:0;counter-reset:step;}
+  ol.steps li{display:flex;gap:13px;margin-bottom:16px;counter-increment:step;}
+  ol.steps li:last-child{margin-bottom:0;}
+  ol.steps li::before{
+    content:counter(step);flex:none;width:29px;height:29px;border-radius:50%;background:var(--accent-soft);color:var(--accent);
+    font-family:var(--font-mono);font-size:12px;display:flex;align-items:center;justify-content:center;
+  }
+  ol.steps li p{margin:2px 0 0;font-size:15px;overflow-wrap:anywhere;}
+  details.rules{padding:0 2px;}
+  details.rules summary{
+    display:flex;align-items:center;justify-content:space-between;min-height:44px;padding:10px 0;cursor:pointer;
+    font-size:15px;font-weight:650;list-style:none;
+  }
+  details.rules summary::-webkit-details-marker{display:none;}
+  details.rules summary::after{content:'+';color:var(--accent);font-size:21px;font-weight:500;}
+  details.rules[open] summary::after{content:'−';}
+  .rule-list{list-style:none;margin:0;padding:0 0 5px;}
+  .rule-list li{padding:11px 0;border-top:1px solid var(--line);font-size:14.5px;}
+  .content-group + .content-group{margin-top:34px;}
+  .local-heading{margin:0 0 14px;color:var(--ink);font-size:17px;font-weight:700;}
+  .place-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px;}
+  .place-card{
+    min-width:0;overflow:hidden;border:1px solid color-mix(in srgb,var(--line) 82%,transparent);
+    border-radius:var(--radius);background:var(--panel);box-shadow:var(--shadow);
+  }
+  .place-media{position:relative;display:grid;place-items:center;aspect-ratio:16/10;overflow:hidden;background:var(--accent-soft);color:var(--accent);}
+  .place-media img{width:100%;height:100%;display:block;object-fit:cover;}
+  .place-media svg{width:28px;height:28px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;}
+  .place-card.no-image{display:grid;grid-template-columns:36px minmax(0,1fr);align-items:start;padding:17px 18px;}
+  .place-card.no-image .place-media{width:36px;height:36px;aspect-ratio:auto;border-radius:10px;}
+  .place-card.no-image .place-media svg{width:17px;height:17px;}
+  .place-card.no-image .place-body{min-height:0;padding:0 0 0 11px;}
+  .place-card.no-image .place-provider{margin-bottom:4px;}
+  .place-card.no-image h3{font-size:18px;}
+  .place-card.no-image .place-description{margin:5px 0 9px;}
+  .place-card.no-image .place-link{justify-content:flex-start;margin-top:5px;}
+  .place-body{display:flex;min-height:170px;flex-direction:column;padding:18px;}
+  .place-provider{align-self:flex-start;margin-bottom:8px;color:var(--ink-soft);font-size:10.5px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;}
+  .place-card h3{margin:0;color:var(--ink);font-family:var(--font-display);font-size:21px;line-height:1.25;}
+  .place-description{margin:8px 0 16px;color:var(--ink-soft);font-size:14px;line-height:1.55;overflow-wrap:anywhere;}
+  .place-link{display:inline-flex;align-items:center;justify-content:space-between;gap:9px;margin-top:auto;color:var(--accent);font-size:13px;font-weight:700;text-decoration:none;}
+  .place-link:hover{text-decoration:underline;text-underline-offset:3px;}
+  .place-link svg{width:18px;height:18px;flex:none;fill:none;stroke:currentColor;stroke-width:1.9;stroke-linecap:round;stroke-linejoin:round;}
+  .legacy-place{margin:0 0 16px;font-size:15px;overflow-wrap:anywhere;}
+  .legacy-place strong{font-weight:700;}
+  .tip{margin-top:20px;padding:16px 18px;background:var(--warm-soft);border-radius:calc(var(--radius) * .82);font-size:14.5px;}
+  .review-copy{max-width:620px;margin:0 0 18px;color:var(--ink-soft);font-size:15px;}
+  .review-button{
+    display:inline-flex;align-items:center;justify-content:center;min-height:48px;padding:13px 18px;border-radius:12px;
+    background:var(--accent);color:#fff;font-size:14px;font-weight:700;text-decoration:none;
+  }
+  footer{padding:48px 34px 68px;text-align:center;color:var(--ink-soft);font-size:13.5px;}
+  .visually-hidden{
+    position:absolute!important;width:1px!important;height:1px!important;padding:0!important;margin:-1px!important;
+    overflow:hidden!important;clip:rect(0,0,0,0)!important;white-space:nowrap!important;border:0!important;
+  }
+  @media(max-width:720px){
+    body.theme-loft .hero{display:block;padding:18px 18px 0;}
+    body.theme-loft .hero-content{padding:38px 24px 42px;border-radius:18px 18px 0 0;}
+    body.theme-loft .hero-cover{min-height:300px;border-radius:0 0 18px 18px;}
+    body.theme-loft .hero.no-cover{padding:18px;}
+    body.theme-loft .hero.no-cover .hero-content{border-radius:18px;}
+    body.theme-cabin .hero{min-height:500px;}
+  }
+  @media(max-width:520px){
+    nav{padding:0 8px;}
+    nav a{padding-left:9px;padding-right:9px;font-size:11px;}
+    section{padding:44px 20px 4px;}
+    .hero-content{padding-left:20px!important;padding-right:20px!important;}
+    body.theme-coastal .hero{padding:48px 20px 18px;}
+    body.theme-coastal .hero-cover{margin:28px 0 0;border-radius:16px;}
+    body.theme-coastal .gallery{grid-template-columns:repeat(2,minmax(0,1fr));}
+    body.theme-cabin section,body.theme-loft section{padding-left:20px;padding-right:20px;}
+    body.theme-cabin .hero-content{padding-bottom:40px;}
+    .section-heading{font-size:27px;}
+    .wifi-grid{grid-template-columns:1fr;}
+    .copy-button{justify-self:start;}
+    .place-grid{grid-template-columns:1fr;}
+    .card{padding:20px;}
+    footer{padding-left:20px;padding-right:20px;}
+  }
+  @media(prefers-reduced-motion:reduce){
+    html{scroll-behavior:auto;}
+    *{transition:none!important;}
+  }
+  @media(prefers-contrast:more){
+    .card,.place-card,.copy-button,.review-button{outline:2px solid var(--ink);outline-offset:0;}
+    nav a.active{border-bottom-width:4px;}
+  }
+
+
+
+  /* v2.8 — warmer hospitality system with cleaner spacing and softer structure */
+  :root{
+    --page-pad:40px;
+    --section-space:72px;
+    --card-radius:24px;
+    --soft-shadow:0 10px 34px rgba(28,40,42,.065);
+  }
+  body{font-size:16px;line-height:1.68;}
+  .site-shell{max-width:920px;background:transparent;}
+  nav{
+    top:12px;width:calc(100% - 24px);margin:12px auto 0;padding:5px;border:0;border-radius:16px;
+    background:color-mix(in srgb,var(--bg) 88%,white 12%);box-shadow:0 8px 28px rgba(28,40,42,.075);
+  }
+  nav a{padding:10px 14px;border:0;border-radius:11px;font-size:12px;font-weight:650;}
+  nav a.active{border:0;background:var(--panel);color:var(--accent);box-shadow:0 1px 4px rgba(28,40,42,.09);}
+  .hero{overflow:visible;}
+  .hero .eyebrow{margin-bottom:10px;font-size:10.5px;letter-spacing:.11em;}
+  .hero h1{margin-bottom:12px;font-size:clamp(40px,7vw,64px);line-height:1.04;letter-spacing:-.035em;}
+  .hero .tagline{font-size:18px;line-height:1.5;}
+  .hero .host-note{margin-top:17px;font-size:14px;line-height:1.6;}
+  section{padding:var(--section-space) var(--page-pad) 0;}
+  .section-top{margin-bottom:28px;}
+  .section-marker{display:none;}
+  .section-heading{max-width:690px;font-size:clamp(29px,4.5vw,38px);line-height:1.18;letter-spacing:-.025em;}
+  .card{
+    margin-bottom:18px;padding:25px 26px;border:0;border-radius:var(--card-radius);background:var(--panel);
+    box-shadow:var(--soft-shadow);
+  }
+  .content-label{margin-bottom:17px;font-size:11.5px;letter-spacing:.035em;text-transform:uppercase;}
+  .wifi-grid{gap:24px;}
+  .wifi-item + .wifi-item{margin-top:18px;}
+  .wifi-item .label{font-size:11.5px;}
+  .wifi-item .value{font-size:15.5px;}
+  .copy-button{min-height:44px;padding:10px 15px;border-radius:12px;}
+  .gallery{gap:12px;margin-bottom:20px;}
+  .gallery img{border-radius:18px;}
+  ol.steps li{gap:14px;margin-bottom:18px;}
+  ol.steps li::before{width:30px;height:30px;}
+  details.rules summary{min-height:48px;}
+  .rule-list li{padding:12px 0;border-color:color-mix(in srgb,var(--line) 72%,transparent);}
+  .content-group + .content-group{margin-top:42px;}
+  .local-heading{margin-bottom:16px;font-size:18px;}
+  .place-grid{gap:18px;}
+  .place-card{border:0;border-radius:var(--card-radius);background:var(--panel);box-shadow:var(--soft-shadow);}
+  .place-media{border-radius:0;}
+  .place-body{min-height:176px;padding:20px;}
+  .place-card h3{font-size:22px;line-height:1.23;}
+  .place-description{margin:9px 0 18px;font-size:14.5px;}
+  .place-link{font-size:13.5px;}
+  .place-card.no-image{grid-template-columns:38px minmax(0,1fr);padding:19px 20px;}
+  .place-card.no-image .place-media{width:38px;height:38px;border-radius:12px;}
+  .tip{margin-top:22px;padding:18px 20px;border-radius:18px;}
+  .review-copy{font-size:15.5px;}
+  .review-button{min-height:50px;padding:13px 20px;border-radius:14px;}
+  footer{padding:58px var(--page-pad) 76px;}
+
+  /* Coastal: airy, image-led, calm */
+  body.theme-coastal .site-shell{max-width:900px;}
+  body.theme-coastal .hero{display:flex;flex-direction:column;padding:30px 30px 0;text-align:left;}
+  body.theme-coastal .hero-cover{order:1;max-width:none;width:100%;margin:0;aspect-ratio:16/9;border-radius:28px;box-shadow:var(--soft-shadow);}
+  body.theme-coastal .hero-content{order:2;max-width:700px;padding:38px 10px 8px;}
+  body.theme-coastal .card,body.theme-coastal .place-card{background:rgba(255,255,255,.9);}
+  body.theme-coastal .gallery{grid-template-columns:repeat(3,minmax(0,1fr));}
+  body.theme-coastal .gallery img{aspect-ratio:1;}
+
+  /* Cabin: immersive but not heavy */
+  body.theme-cabin .site-shell{max-width:940px;}
+  body.theme-cabin nav{background:rgba(244,239,229,.9);}
+  body.theme-cabin .hero{min-height:560px;margin:18px 18px 0;padding:0;border-radius:30px;overflow:hidden;display:flex;align-items:flex-end;background:var(--accent);}
+  body.theme-cabin .hero-cover{position:absolute;inset:0;border-radius:0;}
+  body.theme-cabin .hero-cover::after{background:linear-gradient(180deg,rgba(27,34,23,.05) 18%,rgba(27,34,23,.72) 100%);}
+  body.theme-cabin .hero-content{max-width:720px;padding:64px 52px;color:#fff;}
+  body.theme-cabin .hero.no-cover{min-height:380px;}
+  body.theme-cabin section{padding-left:46px;padding-right:46px;}
+  body.theme-cabin .card,body.theme-cabin .place-card{background:rgba(255,253,248,.94);}
+  body.theme-cabin .gallery{grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;}
+  body.theme-cabin .gallery img{aspect-ratio:4/3;border-radius:20px;}
+
+  /* Loft: editorial, warm, and balanced */
+  body.theme-loft .site-shell{max-width:1060px;}
+  body.theme-loft nav{width:calc(100% - 40px);justify-content:flex-start;padding:5px;}
+  body.theme-loft nav a{flex:0 0 auto;}
+  body.theme-loft .hero{display:grid;grid-template-columns:minmax(0,.9fr) minmax(360px,1.1fr);gap:16px;padding:24px 24px 0;}
+  body.theme-loft .hero-content{order:1;padding:54px 44px;border-radius:26px;background:var(--panel);}
+  body.theme-loft .hero-cover{order:2;min-height:440px;border-radius:26px;}
+  body.theme-loft .hero.no-cover{display:block;padding:24px;}
+  body.theme-loft .hero.no-cover .hero-content{max-width:820px;border-radius:26px;}
+  body.theme-loft .hero h1{font-size:clamp(40px,5.7vw,66px);line-height:1.01;}
+  body.theme-loft section{padding-left:48px;padding-right:48px;}
+  body.theme-loft .card,body.theme-loft .place-card{border-radius:20px;background:rgba(255,255,255,.94);}
+  body.theme-loft .gallery{grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;}
+  body.theme-loft .gallery img{aspect-ratio:4/3;border-radius:18px;}
+  body.theme-loft .gallery img:first-child{grid-column:1/-1;aspect-ratio:16/8;}
+
+  @media(max-width:720px){
+    :root{--page-pad:22px;--section-space:58px;--card-radius:20px;}
+    nav{top:8px;width:calc(100% - 16px);margin-top:8px;padding:4px;border-radius:14px;}
+    nav a{padding:9px 8px;font-size:11px;}
+    .hero h1{font-size:clamp(38px,11vw,52px);}
+    .hero .tagline{font-size:16.5px;}
+    .card{padding:22px 20px;}
+    .place-grid{grid-template-columns:1fr;}
+    body.theme-coastal .hero{padding:18px 18px 0;}
+    body.theme-coastal .hero-cover{border-radius:22px;}
+    body.theme-coastal .hero-content{padding:30px 4px 4px;}
+    body.theme-cabin .hero{min-height:500px;margin:12px 12px 0;border-radius:24px;}
+    body.theme-cabin .hero-content{padding:48px 28px;}
+    body.theme-cabin section{padding-left:22px;padding-right:22px;}
+    body.theme-loft .hero{display:flex;flex-direction:column;gap:12px;padding:16px 16px 0;}
+    body.theme-loft .hero-content{order:2;padding:36px 26px;border-radius:22px;}
+    body.theme-loft .hero-cover{order:1;min-height:300px;border-radius:22px;}
+    body.theme-loft .hero.no-cover{padding:16px;}
+    body.theme-loft section{padding-left:22px;padding-right:22px;}
+  }
+  @media(max-width:520px){
+    .gallery{gap:9px;}
+    body.theme-coastal .gallery{grid-template-columns:repeat(2,minmax(0,1fr));}
+    body.theme-cabin .gallery,body.theme-loft .gallery{grid-template-columns:1fr;}
+    body.theme-loft .gallery img:first-child{grid-column:auto;aspect-ratio:4/3;}
+    .wifi-grid{grid-template-columns:1fr;align-items:start;}
+    .copy-button{justify-self:start;}
+  }
+
+
+  /* v2.8 — refined hospitality rhythm and quieter component styling */
+  :root{
+    --page-pad:38px;
+    --section-space:64px;
+    --card-radius:16px;
+    --soft-shadow:0 8px 28px rgba(28,40,42,.055);
+  }
+  body{font-size:15.5px;line-height:1.64;}
+  .site-shell{max-width:920px;}
+  nav{top:0;width:100%;margin:0;padding:0 var(--page-pad);border:0;border-radius:0;background:color-mix(in srgb,var(--bg) 94%,transparent);box-shadow:0 1px 0 color-mix(in srgb,var(--line) 70%,transparent);}
+  nav a{position:relative;padding:14px 12px 12px;border:0;border-radius:0;background:transparent;font-size:11.5px;font-weight:600;}
+  nav a::after{content:'';position:absolute;left:12px;right:12px;bottom:7px;height:2px;border-radius:999px;background:transparent;}
+  nav a.active{background:transparent;box-shadow:none;color:var(--accent);}
+  nav a.active::after{background:var(--accent);}
+  .hero .eyebrow{margin-bottom:9px;font-size:10px;letter-spacing:.11em;}
+  .hero h1{margin-bottom:11px;font-size:clamp(38px,6.7vw,58px);line-height:1.06;letter-spacing:-.032em;}
+  .hero .tagline{font-size:17px;line-height:1.5;}
+  .hero .host-note{margin-top:14px;font-size:13.5px;line-height:1.55;}
+  section{padding:var(--section-space) var(--page-pad) 0;}
+  .section-top{margin-bottom:22px;}
+  .section-heading{font-size:clamp(27px,4vw,34px);line-height:1.2;letter-spacing:-.022em;}
+  .card{margin-bottom:14px;padding:21px 22px;border:0;border-radius:var(--card-radius);background:var(--panel);box-shadow:var(--soft-shadow);}
+  .content-label{margin-bottom:14px;font-size:10.5px;letter-spacing:.055em;}
+  .wifi-grid{gap:18px;}
+  .wifi-item + .wifi-item{margin-top:14px;}
+  .wifi-item .label{font-size:11px;}
+  .wifi-item .value{font-size:15px;}
+  .copy-button{min-height:40px;padding:9px 13px;border-radius:10px;font-size:12px;}
+  .gallery{gap:10px;margin-bottom:16px;}
+  .gallery img{border-radius:12px;}
+  ol.steps li{gap:12px;margin-bottom:15px;}
+  ol.steps li::before{width:28px;height:28px;}
+  ol.steps li p{font-size:14.5px;}
+  details.rules summary{min-height:44px;padding:8px 0;font-size:14.5px;}
+  .rule-list li{padding:10px 0;font-size:14px;}
+  .content-group + .content-group{margin-top:34px;}
+  .local-heading{margin-bottom:13px;font-size:17px;}
+  .place-grid{gap:14px;}
+  .place-card{border:0;border-radius:var(--card-radius);box-shadow:var(--soft-shadow);}
+  .place-body{min-height:154px;padding:17px;}
+  .place-provider{margin-bottom:6px;font-size:10px;}
+  .place-card h3{font-size:20px;line-height:1.25;}
+  .place-description{margin:7px 0 14px;font-size:14px;}
+  .place-link{font-size:12.5px;}
+  .place-card.no-image{grid-template-columns:32px minmax(0,1fr);padding:15px 16px;}
+  .place-card.no-image .place-media{width:32px;height:32px;border-radius:9px;}
+  .place-card.no-image .place-media svg{width:15px;height:15px;}
+  .place-card.no-image .place-body{padding-left:10px;}
+  .tip{margin-top:18px;padding:15px 17px;border-radius:13px;font-size:14px;}
+  .review-copy{margin-bottom:16px;font-size:14.5px;}
+  .review-button{min-height:46px;padding:12px 17px;border-radius:11px;font-size:13.5px;}
+  footer{padding:52px var(--page-pad) 68px;}
+
+  body.theme-coastal .site-shell{max-width:880px;}
+  body.theme-coastal .hero{padding:24px 28px 0;}
+  body.theme-coastal .hero-cover{border-radius:18px;box-shadow:var(--soft-shadow);}
+  body.theme-coastal .hero-content{max-width:680px;padding:32px 8px 4px;}
+  body.theme-coastal .gallery{grid-template-columns:repeat(3,minmax(0,1fr));}
+  body.theme-coastal .gallery img{aspect-ratio:1;}
+
+  body.theme-cabin .site-shell{max-width:920px;}
+  body.theme-cabin .hero{min-height:520px;margin:12px 12px 0;border-radius:20px;}
+  body.theme-cabin .hero-content{max-width:700px;padding:54px 44px;}
+  body.theme-cabin section{padding-left:42px;padding-right:42px;}
+  body.theme-cabin .gallery{gap:10px;}
+  body.theme-cabin .gallery img{border-radius:12px;}
+
+  body.theme-loft .site-shell{max-width:1020px;}
+  body.theme-loft .hero{gap:12px;padding:18px 18px 0;}
+  body.theme-loft .hero-content{padding:46px 38px;border-radius:16px;}
+  body.theme-loft .hero-cover{min-height:410px;border-radius:16px;}
+  body.theme-loft .hero.no-cover{padding:18px;}
+  body.theme-loft .hero.no-cover .hero-content{border-radius:16px;}
+  body.theme-loft .hero h1{font-size:clamp(38px,5.3vw,60px);}
+  body.theme-loft section{padding-left:42px;padding-right:42px;}
+  body.theme-loft .card,body.theme-loft .place-card{border-radius:14px;}
+  body.theme-loft .gallery{gap:10px;}
+  body.theme-loft .gallery img{border-radius:12px;}
+
+  @media(max-width:720px){
+    :root{--page-pad:20px;--section-space:52px;--card-radius:14px;}
+    nav{padding:0 8px;}
+    nav a{padding:12px 9px 11px;font-size:10.5px;}
+    nav a::after{left:9px;right:9px;bottom:6px;}
+    .hero h1{font-size:clamp(36px,10.5vw,48px);}
+    .hero .tagline{font-size:16px;}
+    .card{padding:19px 18px;}
+    body.theme-coastal .hero{padding:14px 14px 0;}
+    body.theme-coastal .hero-cover{border-radius:15px;}
+    body.theme-coastal .hero-content{padding:26px 6px 2px;}
+    body.theme-cabin .hero{min-height:470px;margin:8px 8px 0;border-radius:16px;}
+    body.theme-cabin .hero-content{padding:42px 24px;}
+    body.theme-cabin section{padding-left:20px;padding-right:20px;}
+    body.theme-loft .hero{gap:10px;padding:12px 12px 0;}
+    body.theme-loft .hero-content{padding:31px 22px;border-radius:14px;}
+    body.theme-loft .hero-cover{min-height:280px;border-radius:14px;}
+    body.theme-loft .hero.no-cover{padding:12px;}
+    body.theme-loft section{padding-left:20px;padding-right:20px;}
+  }
+
+</style>
+</head>
+<body class="theme-{{THEME_KEY}}">
+<div class="site-shell">
+  <nav id="nav" aria-label="Guide sections"></nav>
+
+  <header class="hero" id="welcome">
+    <div class="hero-cover" id="hero-cover" hidden>
+      <img id="hero-image" alt="">
+    </div>
+    <div class="hero-content">
+      <p class="eyebrow">Welcome</p>
+      <h1 id="property-name">Guest guide</h1>
+      <p class="tagline" id="tagline" hidden></p>
+      <p class="host-note" id="host-note" hidden></p>
+    </div>
+  </header>
+
+  <main>
+    <section id="stay" hidden>
+      <div class="section-top">
+        <div class="section-marker" aria-hidden="true"><span></span><span></span><span></span></div>
+        <h2 class="section-heading">Everything you need for a comfortable stay</h2>
+      </div>
+
+      <div class="card" id="wifi-card" hidden>
+        <p class="content-label">Wi-Fi</p>
+        <div class="wifi-grid">
+          <div>
+            <div class="wifi-item" id="wifi-name-row" hidden>
+              <p class="label">Network</p>
+              <p class="value" id="wifi-name"></p>
+            </div>
+            <div class="wifi-item" id="wifi-password-row" hidden>
+              <p class="label">Password</p>
+              <p class="value" id="wifi-password"></p>
+            </div>
+          </div>
+          <button class="copy-button" id="copy-button" type="button" hidden>Copy Wi-Fi password</button>
+        </div>
+        <p class="copy-status" id="copy-status" aria-live="polite"></p>
+      </div>
+
+      <div class="gallery" id="gallery" hidden aria-label="Property photos"></div>
+
+      <div class="card" id="checkin-card" hidden>
+        <p class="content-label">Check-in <span id="checkin-time"></span></p>
+        <ol class="steps" id="checkin-steps"></ol>
+      </div>
+
+      <div class="card" id="rules-card" hidden>
+        <p class="content-label">A few notes for a comfortable stay</p>
+        <details class="rules">
+          <summary id="rules-summary">House guidelines</summary>
+          <ul class="rule-list" id="rules-list"></ul>
+        </details>
+      </div>
+    </section>
+
+    <section id="around" hidden>
+      <div class="section-top">
+        <div class="section-marker" aria-hidden="true"><span></span><span></span><span></span></div>
+        <h2 class="section-heading">A few local favorites</h2>
+      </div>
+
+      <div class="content-group" id="food-group" hidden>
+        <h3 class="local-heading">Food and drink</h3>
+        <div id="local-food"></div>
+      </div>
+
+      <div class="content-group" id="things-group" hidden>
+        <h3 class="local-heading">Things to do</h3>
+        <div id="local-things"></div>
+      </div>
+
+      <div class="tip" id="local-tip" hidden></div>
+    </section>
+
+    <section id="leaving" hidden>
+      <div class="section-top">
+        <div class="section-marker" aria-hidden="true"><span></span><span></span><span></span></div>
+        <h2 class="section-heading">Before you head home</h2>
+      </div>
+
+      <div class="card" id="checkout-card" hidden>
+        <p class="content-label">Check-out <span id="checkout-time"></span></p>
+        <ol class="steps" id="checkout-steps"></ol>
+      </div>
+
+      <div id="review-group" hidden>
+        <p class="review-copy">We hope you felt right at home. If anything could have been better, please let your host know. If you enjoyed your stay, a review would mean a lot.</p>
+        <a class="review-button" id="review-link" target="_blank" rel="noopener noreferrer">Share your experience</a>
+      </div>
+    </section>
+  </main>
+
+  <footer id="footer">Thank you for staying with us.</footer>
+</div>
+
+<!-- GUIDE-DATA -->
+<script nonce="{{CSP_NONCE}}">
+(function(){
+  'use strict';
+
+  const dataNode = document.getElementById('guide-data');
+  let guide = {};
+  try {
+    guide = JSON.parse(dataNode ? dataNode.textContent : '{}');
+  } catch (error) {
+    console.error('Guide data could not be read.', error);
+  }
+
+  const byId = (id) => document.getElementById(id);
+  const clean = (value) => typeof value === 'string' ? value.trim() : '';
+  const list = (value) => Array.isArray(value) ? value.filter((item) => typeof item === 'string' && item.trim()) : [];
+  const recommendations = (value) => Array.isArray(value) ? value.filter((item) => item && (clean(item.name) || clean(item.description))) : [];
+
+  function setText(id, value){
+    const element = byId(id);
+    if (element) element.textContent = value;
+  }
+
+  function safeExternalUrl(value){
+    const raw = clean(value);
+    if (!raw) return null;
+    try {
+      const parsed = new URL(raw);
+      return parsed.protocol === 'https:' || parsed.protocol === 'http:' ? parsed.href : null;
+    } catch (error) {
+      return null;
+    }
+  }
+
+  function safeImageSource(value){
+    const raw = clean(value);
+    if (!raw) return null;
+    if (/^images\/[a-z0-9._-]+$/i.test(raw)) return raw;
+    if (/^blob:/i.test(raw)) return raw;
+    if (/^data:image\/(?:jpeg|png|webp|gif);base64,/i.test(raw)) return raw;
+    return null;
+  }
+
+  function renderSteps(targetId, values){
+    const target = byId(targetId);
+    if (!target) return;
+    target.replaceChildren();
+    list(values).forEach((value) => {
+      const item = document.createElement('li');
+      const text = document.createElement('p');
+      text.textContent = value;
+      item.appendChild(text);
+      target.appendChild(item);
+    });
+  }
+
+  function mapProvider(value){
+    const url = safeExternalUrl(value);
+    if (!url) return '';
+    try {
+      const host = new URL(url).hostname.toLowerCase().replace(/^www\./, '');
+      if (host === 'maps.apple.com') return 'Apple Maps';
+      if (host === 'maps.app.goo.gl' || host === 'goo.gl' || host === 'maps.google.com' || host.endsWith('.google.com')) return 'Google Maps';
+    } catch (error) {}
+    return '';
+  }
+
+  function safeMapUrl(value){
+    const url = safeExternalUrl(value);
+    return url && mapProvider(url) ? url : null;
+  }
+
+  function renderRecommendations(targetId, values){
+    const target = byId(targetId);
+    if (!target) return;
+    target.replaceChildren();
+    const entries = recommendations(values);
+    const structured = entries.some((entry) => clean(entry.mapUrl) || entry.image);
+    target.className = structured ? 'place-grid' : '';
+    entries.forEach((entry) => {
+      const name = clean(entry.name);
+      const description = clean(entry.description);
+      const mapUrl = safeMapUrl(entry.mapUrl);
+      const provider = mapProvider(mapUrl);
+      const imageSource = safeImageSource(entry.image && entry.image.src);
+
+      if (!structured) {
+        const paragraph = document.createElement('p');
+        paragraph.className = 'legacy-place';
+        if (name) {
+          const strong = document.createElement('strong');
+          strong.textContent = name;
+          paragraph.appendChild(strong);
+        }
+        if (name && description) paragraph.appendChild(document.createTextNode(': '));
+        if (description) paragraph.appendChild(document.createTextNode(description));
+        target.appendChild(paragraph);
+        return;
+      }
+
+      const card = document.createElement('article');
+      card.className = 'place-card';
+      const media = document.createElement('div');
+      media.className = 'place-media';
+      if (imageSource) {
+        const image = document.createElement('img');
+        image.src = imageSource;
+        image.alt = clean(entry.image.alt) || `${name || 'Local place'} recommendation photo`;
+        image.loading = 'lazy';
+        image.decoding = 'async';
+        media.appendChild(image);
+      } else {
+        card.classList.add('no-image');
+        media.innerHTML = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 10c0 5-8 11-8 11S4 15 4 10a8 8 0 1 1 16 0Z"/><circle cx="12" cy="10" r="2.5"/></svg>';
+      }
+      const body = document.createElement('div');
+      body.className = 'place-body';
+      if (provider) {
+        const source = document.createElement('span');
+        source.className = 'place-provider';
+        source.textContent = provider;
+        body.appendChild(source);
+      }
+      if (name) {
+        const heading = document.createElement('h3');
+        heading.textContent = name;
+        body.appendChild(heading);
+      }
+      if (description) {
+        const copy = document.createElement('p');
+        copy.className = 'place-description';
+        copy.textContent = description;
+        body.appendChild(copy);
+      }
+      if (mapUrl) {
+        const link = document.createElement('a');
+        link.className = 'place-link';
+        link.href = mapUrl;
+        link.target = '_blank';
+        link.rel = 'noopener noreferrer';
+        link.setAttribute('aria-label', `Open ${name || 'this recommendation'} in ${provider}`);
+        const label = document.createElement('span');
+        label.textContent = `View on ${provider}`;
+        const arrow = document.createElement('span');
+        arrow.innerHTML = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>';
+        link.append(label, arrow.firstElementChild);
+        body.appendChild(link);
+      }
+      card.append(media, body);
+      target.appendChild(card);
+    });
+  }
+
+  function renderGallery(photos){
+    const gallery = byId('gallery');
+    if (!gallery) return false;
+    gallery.replaceChildren();
+    const extraPhotos = Array.isArray(photos) ? photos.slice(1) : [];
+    extraPhotos.forEach((photo, index) => {
+      const source = safeImageSource(photo && photo.src);
+      if (!source) return;
+      const image = document.createElement('img');
+      image.src = source;
+      image.alt = clean(photo.alt) || `Property photo ${index + 2}`;
+      image.loading = index < 2 ? 'eager' : 'lazy';
+      image.decoding = 'async';
+      gallery.appendChild(image);
+    });
+    gallery.hidden = gallery.children.length === 0;
+    return !gallery.hidden;
+  }
+
+  function renderRules(values){
+    const rules = list(values);
+    const card = byId('rules-card');
+    const target = byId('rules-list');
+    if (!card || !target || !rules.length) return false;
+    target.replaceChildren();
+    rules.forEach((value) => {
+      const item = document.createElement('li');
+      item.textContent = value;
+      target.appendChild(item);
+    });
+    setText('rules-summary', `${rules.length} ${rules.length === 1 ? 'house guideline' : 'house guidelines'}`);
+    card.hidden = false;
+    return true;
+  }
+
+  function addNavLink(id, label){
+    const nav = byId('nav');
+    const link = document.createElement('a');
+    link.href = `#${id}`;
+    link.textContent = label;
+    nav.appendChild(link);
+  }
+
+  const property = guide.property || {};
+  const wifi = guide.wifi || {};
+  const checkIn = guide.checkIn || {};
+  const checkOut = guide.checkOut || {};
+  const localGuide = guide.localGuide || {};
+  const photos = Array.isArray(guide.photos) ? guide.photos : [];
+
+  const propertyName = clean(property.name) || 'Guest guide';
+  const tagline = clean(property.tagline);
+  const hostNames = clean(property.hostNames);
+  const responseNote = clean(property.responseNote);
+
+  setText('property-name', propertyName);
+  document.title = `${propertyName} guest guide`;
+
+  if (tagline) {
+    setText('tagline', tagline);
+    byId('tagline').hidden = false;
+  }
+
+  const hostParts = [];
+  if (hostNames) hostParts.push(`Hosted by ${hostNames}`);
+  if (responseNote) hostParts.push(responseNote);
+  if (hostParts.length) {
+    setText('host-note', hostParts.join(' · '));
+    byId('host-note').hidden = false;
+  }
+
+  const coverPhoto = photos[0];
+  const coverSource = safeImageSource(coverPhoto && coverPhoto.src);
+  const hero = byId('welcome');
+  if (coverSource) {
+    const heroImage = byId('hero-image');
+    heroImage.src = coverSource;
+    heroImage.alt = clean(coverPhoto.alt) || `${propertyName} cover photo`;
+    byId('hero-cover').hidden = false;
+  } else {
+    hero.classList.add('no-cover');
+  }
+
+  const wifiName = clean(wifi.name);
+  const wifiPassword = clean(wifi.password);
+  const wifiVisible = Boolean(wifiName || wifiPassword);
+  if (wifiVisible) {
+    byId('wifi-card').hidden = false;
+    if (wifiName) {
+      setText('wifi-name', wifiName);
+      byId('wifi-name-row').hidden = false;
+    }
+    if (wifiPassword) {
+      setText('wifi-password', wifiPassword);
+      byId('wifi-password-row').hidden = false;
+      byId('copy-button').hidden = false;
+    }
+  }
+
+  const checkInSteps = list(checkIn.steps);
+  const checkInVisible = Boolean(clean(checkIn.time) || checkInSteps.length);
+  if (checkInVisible) {
+    byId('checkin-card').hidden = false;
+    setText('checkin-time', clean(checkIn.time) ? `· ${clean(checkIn.time)}` : '');
+    renderSteps('checkin-steps', checkInSteps);
+  }
+
+  const rulesVisible = renderRules(guide.houseRules);
+  const galleryVisible = renderGallery(photos);
+  const stayVisible = wifiVisible || checkInVisible || rulesVisible || galleryVisible;
+  byId('stay').hidden = !stayVisible;
+
+  const food = recommendations(localGuide.food);
+  const things = recommendations(localGuide.things);
+  const localTip = clean(localGuide.tip);
+  if (food.length) {
+    byId('food-group').hidden = false;
+    renderRecommendations('local-food', food);
+  }
+  if (things.length) {
+    byId('things-group').hidden = false;
+    renderRecommendations('local-things', things);
+  }
+  if (localTip) {
+    setText('local-tip', localTip);
+    byId('local-tip').hidden = false;
+  }
+  const aroundVisible = Boolean(food.length || things.length || localTip);
+  byId('around').hidden = !aroundVisible;
+
+  const checkOutSteps = list(checkOut.steps);
+  const checkOutVisible = Boolean(clean(checkOut.time) || checkOutSteps.length);
+  if (checkOutVisible) {
+    byId('checkout-card').hidden = false;
+    setText('checkout-time', clean(checkOut.time) ? `· ${clean(checkOut.time)}` : '');
+    renderSteps('checkout-steps', checkOutSteps);
+  }
+
+  const reviewUrl = safeExternalUrl(guide.reviewUrl);
+  if (reviewUrl) {
+    byId('review-link').href = reviewUrl;
+    byId('review-group').hidden = false;
+  }
+  const leavingVisible = checkOutVisible || Boolean(reviewUrl);
+  byId('leaving').hidden = !leavingVisible;
+
+  setText('footer', hostNames ? `Thank you for staying with ${hostNames}. We hope to welcome you again.` : 'Thank you for staying with us. We hope to welcome you again.');
+
+  const nav = byId('nav');
+  addNavLink('welcome', 'Welcome');
+  if (stayVisible) addNavLink('stay', 'Stay details');
+  if (aroundVisible) addNavLink('around', 'Local favorites');
+  if (leavingVisible) addNavLink('leaving', 'Check-out');
+  nav.hidden = nav.children.length < 2;
+
+  const copyButton = byId('copy-button');
+  copyButton.addEventListener('click', async () => {
+    try {
+      await navigator.clipboard.writeText(wifiPassword);
+      setText('copy-status', 'Wi-Fi password copied.');
+    } catch (error) {
+      setText('copy-status', 'Select the password and copy it manually.');
+    }
+  });
+
+  const links = Array.from(document.querySelectorAll('#nav a'));
+  if ('IntersectionObserver' in window && links.length > 1) {
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (!entry.isIntersecting) return;
+        const activeId = `#${entry.target.id}`;
+        links.forEach((link) => link.classList.toggle('active', link.getAttribute('href') === activeId));
+      });
+    }, {rootMargin:'-38% 0px -56% 0px'});
+    links.forEach((link) => {
+      const target = document.querySelector(link.getAttribute('href'));
+      if (target) observer.observe(target);
+    });
+  }
+})();
+</script>
+</body>
+</html>
