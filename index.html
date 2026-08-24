@@ -5,21 +5,20 @@
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <meta content="A clearer listing and a smoother guest journey. Start with a free analysis, or go straight to a human-led review." name="description"/>
-<meta content="Guest Guide Hospitality | A clearer listing, a smoother guest journey" property="og:title"/>
+<meta content="lst | A clearer listing, a smoother guest journey" property="og:title"/>
 <meta content="Free listing analysis, or a full human-led review, reviewed by a real hospitality and product-design professional." property="og:description"/>
-<title>Guest Guide Hospitality | A clearer listing, a smoother guest journey</title>
+<title>lst | A clearer listing, a smoother guest journey</title>
 <link href="https://fonts.googleapis.com" rel="preconnect"/>
 <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
-<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/><link href="styles.css?v=2.17.0" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,600&family=IBM+Plex+Mono:wght@500;600&amp;display=swap" rel="stylesheet"/><link href="styles.css?v=3.0.0" rel="stylesheet"/>
 
 </head>
 <body class="page-public page-home">
 <a class="skip-link" href="#main">Skip to main content</a>
 <header class="site-header">
 <nav aria-label="Primary navigation" class="nav">
-<a aria-label="Guest Guide Hospitality home" class="brand" href="index.html">
-<span aria-hidden="true" class="brand-mark">GG</span>
-<span>Guest Guide</span><span class="brand-product">Hospitality</span>
+<a aria-label="lst home" class="brand" href="index.html">
+<span class="wordmark">lst</span><span class="brand-product">listing review</span>
 </a>
 <div class="nav-links">
 <a class="nav-link" href="#how">How it works</a>
@@ -45,6 +44,53 @@
 </div>
 </div>
 </section>
+
+<section aria-labelledby="demo-title" class="section demo-section" id="demo">
+<div class="section-head center">
+<p class="eyebrow">See it in action</p>
+<h2 id="demo-title">This is what a flagged listing looks like.</h2>
+<p>A real listing, reviewed line by line. Click a flag to see the finding behind it.</p>
+</div>
+<div class="listing-mock">
+<div class="listing-mock-frame">
+<div class="listing-mock-bar"><span class="listing-mock-dots"><span></span><span></span><span></span></span><span class="listing-mock-url">airbnb.com/rooms/···</span><span></span></div>
+<div class="listing-mock-body">
+<div aria-hidden="true" class="listing-photo">
+<svg preserveaspectratio="xMidYMax slice" viewbox="0 0 400 260" xmlns="http://www.w3.org/2000/svg">
+<rect fill="#F4F5F1" height="260" width="400"></rect>
+<rect fill="#E8E5F5" height="150" width="146" x="30" y="34"></rect>
+<path d="M30 34 L103 96 L176 34 Z" fill="#DAD5F0"></path>
+<path d="M40 184 Q60 140 90 150 Q120 160 130 184 Z" fill="#4438C9" opacity=".14"></path>
+<rect fill="#161A22" height="86" opacity=".9" rx="10" width="230" x="150" y="132"></rect>
+<rect fill="#161A22" height="34" opacity=".9" rx="17" width="70" x="180" y="150"></rect>
+<rect fill="#3B4250" height="10" rx="5" width="150" x="180" y="196"></rect>
+<circle cx="330" cy="70" fill="#fff" opacity=".55" r="26"></circle>
+</svg>
+<button aria-label="See flagged issue: cover photo" class="flag-pin" data-finding="photo" style="top:16px;left:250px" type="button">1</button>
+</div>
+<div class="listing-info">
+<h3 class="listing-title">Cozy home near the lake, sleeps 6<button aria-label="See flagged issue: title" class="flag-pin" data-finding="title" type="button">2</button></h3>
+<p class="listing-meta">★ 4.86 · 112 reviews · Lakeside, MI</p>
+<p class="listing-desc">Welcome to our place! We have a nice house with lake access. House rules: NO parties, NO smoking, NO pets, NO exceptions. Check-in after 4pm.<button aria-label="See flagged issue: house rules tone" class="flag-pin" data-finding="rules" type="button">3</button></p>
+</div>
+</div>
+</div>
+</div>
+<p class="demo-hint">A fictional example listing, built to show how a review reads — not a real property.</p>
+</section>
+
+<dialog aria-labelledby="finding-heading" class="finding-dialog" id="finding-dialog">
+<div class="finding-dialog-inner">
+<button aria-label="Close" class="finding-close" id="finding-close" type="button">×</button>
+<span class="finding-tag" id="finding-tag">Cover photo</span>
+<h3 id="finding-heading"></h3>
+<dl class="finding-detail">
+<div><dt>What we noticed</dt><dd id="finding-noticed"></dd></div>
+<div><dt>Why it matters</dt><dd id="finding-matters"></dd></div>
+<div><dt>What we'd change</dt><dd id="finding-change"></dd></div>
+</dl>
+</div>
+</dialog>
 
 <section aria-labelledby="how-title" class="section" id="how">
 <div class="section-head center">
@@ -180,6 +226,13 @@
 <p>Your cover photo shows the living room, but the listing's strongest differentiator, the private harbor view, doesn't appear until photo six. Guests skimming search results may never see it.</p>
 <p class="quote-why">Why it matters: the cover photo carries most of the weight in a guest's first two seconds of deciding whether to click in at all.</p>
 </div>
+<div aria-label="Sample page from an Expert Review deliverable" class="deliverable-preview" role="img">
+<div class="deliverable-head"><strong>Expert Review — Lakeside Cottage</strong><span>Page 2 of 6</span></div>
+<div class="deliverable-body">
+<div class="deliverable-finding"><span class="deliverable-finding-tag">Finding 01 · Cover photo</span><h4>Strongest differentiator is buried</h4><p>The harbor view doesn't appear until photo six. Reorder so it leads.</p></div>
+<div class="deliverable-finding"><span class="deliverable-finding-tag">Finding 02 · House rules</span><h4>Rules read as warnings, not welcome</h4><p>Four "NO" statements before any welcome. Reframe as expectations.</p></div>
+</div>
+</div>
 </section>
 
 <section aria-labelledby="get-started-title" class="section section-soft" id="get-started">
@@ -224,7 +277,7 @@
 </section>
 
 </main>
-<footer><a class="brand" href="index.html"><span aria-hidden="true" class="brand-mark">GG</span><span>Guest Guide</span><span class="brand-product">Hospitality</span></a><span>Clearer information. Warmer guest experiences.</span></footer>
+<footer><a class="brand" href="index.html" aria-label="lst home"><span class="wordmark">lst</span><span class="brand-product">listing review</span></a><span>Clearer information. Warmer guest experiences.</span></footer>
 
 <script>
 (function(){
@@ -328,6 +381,64 @@
   window.addEventListener('scroll', onScroll, {passive:true});
   window.addEventListener('resize', onScroll);
   update();
+})();
+</script>
+<script>
+(function(){
+  var dialog = document.getElementById('finding-dialog');
+  if(!dialog) return;
+  var pins = document.querySelectorAll('.flag-pin');
+  var closeButton = document.getElementById('finding-close');
+  var tagEl = document.getElementById('finding-tag');
+  var headingEl = document.getElementById('finding-heading');
+  var noticedEl = document.getElementById('finding-noticed');
+  var mattersEl = document.getElementById('finding-matters');
+  var changeEl = document.getElementById('finding-change');
+
+  var findings = {
+    photo: {
+      tag: 'Cover photo',
+      heading: 'The lake view is on photo four, not the cover.',
+      noticed: 'The cover photo shows the exterior driveway. The lake-facing deck, the property’s clearest differentiator, only appears once a guest has already tapped in.',
+      matters: 'Most of a guest’s decision to click happens in the first couple seconds of skimming search results — before they ever see photo four.',
+      change: 'Lead with the lake view. Save the driveway and exterior shots for later in the sequence.'
+    },
+    title: {
+      tag: 'Title',
+      heading: '“Cozy home near the lake” could be any of forty listings.',
+      noticed: '“Near the lake” is vague, and “cozy” is the most common word in the category — it doesn’t tell a guest what makes this specific place worth choosing.',
+      matters: 'The title competes on the same results page as dozens of similar homes. A generic title blends in exactly where it needs to stand out.',
+      change: 'Name the specific, provable differentiator: private dock access, walk to the lake, whatever is actually true and rare here.'
+    },
+    rules: {
+      tag: 'House rules',
+      heading: 'Four “NO”s before a single welcome.',
+      noticed: 'The listing opens its house-rules section with a list of prohibitions — parties, smoking, pets, exceptions — before any warmer, welcoming language appears.',
+      matters: 'Rules set the emotional tone before a guest ever arrives. Leading with restrictions can read as adversarial, even when the rules themselves are completely reasonable.',
+      change: 'Open with what’s included and encouraged, then state the same rules as clear expectations rather than a wall of prohibitions.'
+    }
+  };
+
+  function openFinding(key){
+    var data = findings[key];
+    if(!data) return;
+    tagEl.textContent = data.tag;
+    headingEl.textContent = data.heading;
+    noticedEl.textContent = data.noticed;
+    mattersEl.textContent = data.matters;
+    changeEl.textContent = data.change;
+    dialog.showModal();
+  }
+
+  for(var i=0;i<pins.length;i++){
+    pins[i].addEventListener('click', function(){
+      openFinding(this.getAttribute('data-finding'));
+    });
+  }
+  if(closeButton) closeButton.addEventListener('click', function(){ dialog.close(); });
+  dialog.addEventListener('click', function(e){
+    if(e.target === dialog) dialog.close();
+  });
 })();
 </script>
 </body>
