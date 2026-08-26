@@ -13,7 +13,7 @@ Both pages share one stylesheet, `styles.css`, scoped under `body.page-public`.
 ## Pricing
 
 - **Free Analysis** — $0, 3–5 findings, no obligation.
-- **Expert Review** — $250, full listing and guest-journey review.
+- **Expert Review** — $200, full listing and guest-journey review.
 
 ## Inquiry form
 
