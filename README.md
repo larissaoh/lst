@@ -4,20 +4,20 @@ A human-led Airbnb and short-term rental (STR) listing review service. A real ho
 
 ## Pages
 
-- `index.html` — the marketing site: hero, a sample review deliverable, pricing (Free Analysis / Expert Review / Review + Implementation), an inquiry form, and FAQ.
+- `index.html` — the marketing site: hero, a sample review deliverable, an interactive two-tier pricing panel (Free Analysis / Expert Review) with the inquiry form, and FAQ.
 - `service-thanks.html` — confirmation page shown after the inquiry form is submitted.
+- `asset/` — photography (interior shots used across the page) and the logo.
 
 Both pages share one stylesheet, `styles.css`, scoped under `body.page-public`.
 
 ## Pricing
 
 - **Free Analysis** — $0, 3–5 findings, no obligation.
-- **Expert Review** — $249, full listing and guest-journey review.
-- **Review + Implementation** — from $549, review plus the fixes applied.
+- **Expert Review** — $250, full listing and guest-journey review.
 
 ## Inquiry form
 
-`index.html#get-started` has the intake form (name, email, listing link, tier). It's a Netlify Forms submission (`data-netlify="true"`, with a honeypot field for spam) — no backend needed. After deploying to Netlify, submissions appear in the Netlify project under **Forms**; configure email notifications there if you want them.
+The intake form lives inside the pricing section (`#pricing`): clicking a tier's CTA slides a panel into view next to the selected card, embedding one of two [Tally](https://tally.so) forms (`#pricing-form-free` / `#pricing-form-paid`) depending on the tier chosen. Each form is built and edited entirely in Tally, not in this repo — update fields, logic, notification emails, and the post-submit redirect from your Tally dashboard (Settings → After submission).
 
 ## Run locally
 
@@ -29,11 +29,11 @@ Open `http://localhost:8000/`.
 
 ## Deployment
 
-Static hosting via Netlify (`netlify.toml`: publish the repo root, redirect `/` to `/index.html`). No build step, no functions, no dependencies — everything here is plain HTML/CSS/vanilla JS.
+Static hosting via Vercel. No build step, no functions, no dependencies — everything here is plain HTML/CSS/vanilla JS.
 
 ## Design system
 
-`styles.css` defines the `.page-public` design tokens once: a 5-shade cyan brand scale (`--brand-soft`, `--brand-light`, `--brand`, `--brand-mid`, `--brand-dark`), ink/muted neutrals, and severity colors (flag/warn/good) used in the sample review deliverable. Brand color is used sparingly — CTAs, badges, and progress indicators — not as general decoration.
+`styles.css` defines the `.page-public` design tokens once: a 5-shade blue brand scale (`--brand-soft`, `--brand-light`, `--brand`, `--brand-mid`, `--brand-dark`), ink/muted neutrals, and severity colors (flag/warn/good) used in the sample review deliverable. Brand color is used sparingly — CTAs, badges, and progress indicators — not as general decoration.
 
 ## Copy conventions
 
