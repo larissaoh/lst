@@ -68,7 +68,7 @@
   body.page-public .site-header{background:var(--bg)}
   body.page-public .nav{max-width:var(--max);height:72px;margin:0 auto;padding:0 28px;display:flex;align-items:center;justify-content:space-between;gap:24px}
   body.page-public .brand{display:inline-flex;align-items:center;text-decoration:none}
-  body.page-public .brand-logo{display:inline-block;height:28px;width:auto;aspect-ratio:234/101;margin-bottom:32px;background-color:var(--ink);-webkit-mask-image:url("asset/full-logo-svg.svg");mask-image:url("asset/full-logo-svg.svg");-webkit-mask-repeat:no-repeat;mask-repeat:no-repeat;-webkit-mask-size:contain;mask-size:contain;-webkit-mask-position:left center;mask-position:left center}
+  body.page-public .brand-logo{display:inline-block;height:28px;width:auto;margin-bottom:32px;aspect-ratio:234/101;background-color:var(--ink);-webkit-mask-image:url("asset/full-logo-svg.svg");mask-image:url("asset/full-logo-svg.svg");-webkit-mask-repeat:no-repeat;mask-repeat:no-repeat;-webkit-mask-size:contain;mask-size:contain;-webkit-mask-position:left center;mask-position:left center}
   body.page-public #footer-logo{background-color:var(--muted-2)}
   body.page-public .nav-links{display:flex;align-items:center;gap:28px}
   body.page-public .nav-link{font-size:14px;font-weight:600;color:var(--muted);text-decoration:none}
@@ -171,8 +171,12 @@
   body.page-public details[open] summary::after{content:"−"}
   body.page-public details p{max-width:700px;margin:-4px 0 24px;color:var(--muted);font-size:15px;line-height:1.72}
 
-  body.page-public footer{max-width:var(--max);margin:0 auto;padding:40px 28px 52px;display:flex;align-items:center;justify-content:space-between;color:var(--muted-2);font-size:12px}
-  body.page-public footer #footer-logo{opacity:.5;height:20px;width:auto}
+  body.page-public footer{max-width:var(--max);margin:0 auto;padding:32px 28px;display:flex;align-items:center;justify-content:space-between;color:var(--muted-2);font-size:12px}
+  body.page-public footer #footer-logo{height:20px;width:auto; margin-bottom:0;}
+  body.page-public .footer-meta{display:flex;align-items:center;gap:16px}
+  body.page-public .footer-social{display:inline-flex;color:var(--muted-2);transition:color .2s ease}
+  body.page-public .footer-social svg{width:18px;height:18px}
+  body.page-public .footer-social:hover{color:var(--ink-2)}
 
   @media(max-width:760px){
     body.page-public .pricing-interactive{flex-direction:column;max-width:480px}
