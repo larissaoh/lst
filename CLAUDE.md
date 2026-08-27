@@ -4,7 +4,7 @@ Guidance for Claude Code when working in this repo.
 
 ## What this is
 
-`lst` — a solo, human-led Airbnb/short-term-rental (STR) listing review service. A real hospitality and product-design professional reviews a host's listing and guest journey and flags what's hurting bookings. The differentiation bet is **judgment**: human review, not an automated score or another self-serve tool. There is no self-serve product — a browser-based guide builder with its own Stripe payment backend existed earlier and was fully retired; don't reintroduce that shape of product without the owner explicitly asking for it.
+`weia` — a solo, human-led Airbnb/short-term-rental (STR) listing review service. A real hospitality and product-design professional reviews a host's listing and guest journey and flags what's hurting bookings. The differentiation bet is **judgment**: human review, not an automated score or another self-serve tool. There is no self-serve product — a browser-based guide builder with its own Stripe payment backend existed earlier and was fully retired; don't reintroduce that shape of product without the owner explicitly asking for it.
 
 ## Files
 

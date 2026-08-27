@@ -68,7 +68,7 @@
   body.page-public .site-header{background:var(--bg)}
   body.page-public .nav{max-width:var(--max);height:72px;margin:0 auto;padding:0 28px;display:flex;align-items:center;justify-content:space-between;gap:24px}
   body.page-public .brand{display:inline-flex;align-items:center;text-decoration:none}
-  body.page-public .brand-logo{display:inline-block;height:28px;width:auto;aspect-ratio:234/101;margin-bottom:32px;background-color:var(--ink);-webkit-mask-image:url("asset/full-logo-dark.svg");mask-image:url("asset/full-logo-dark.svg");-webkit-mask-repeat:no-repeat;mask-repeat:no-repeat;-webkit-mask-size:contain;mask-size:contain;-webkit-mask-position:left center;mask-position:left center}
+  body.page-public .brand-logo{display:inline-block;height:28px;width:auto;aspect-ratio:234/101;margin-bottom:32px;background-color:var(--ink);-webkit-mask-image:url("asset/full-logo-svg.svg");mask-image:url("asset/full-logo-svg.svg");-webkit-mask-repeat:no-repeat;mask-repeat:no-repeat;-webkit-mask-size:contain;mask-size:contain;-webkit-mask-position:left center;mask-position:left center}
   body.page-public #footer-logo{background-color:var(--muted-2)}
   body.page-public .nav-links{display:flex;align-items:center;gap:28px}
   body.page-public .nav-link{font-size:14px;font-weight:600;color:var(--muted);text-decoration:none}

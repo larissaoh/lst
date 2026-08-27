@@ -1,4 +1,4 @@
-# lst
+# weia
 
 A human-led Airbnb and short-term rental (STR) listing review service. A real hospitality and product-design professional reviews a host's listing and guest journey and flags what's costing them bookings — never an automated score.
 
