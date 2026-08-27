@@ -87,6 +87,11 @@
 
   body.page-public .eyebrow{margin:0 0 16px;color:var(--ink-2);font-size:12px;font-weight:600;letter-spacing:.14em;text-transform:uppercase}
 
+  body.page-public .word-pill{display:inline-flex;align-items:center;overflow:hidden;white-space:nowrap;border-radius:var(--radius-full);background:transparent;border:1px solid var(--line);vertical-align:middle;transition:width .4s cubic-bezier(.65,0,.35,1)}
+  body.page-public .word-pill-inner{display:inline-flex;align-items:center;gap:6px;padding:4px 16px 4px 8px}
+  body.page-public .word-pill-icon{width:40px;height:40px;object-fit:contain;flex:none}
+  body.page-public .word-pill-text{color:var(--ink-2);font-weight:500}
+
   /* hero — full-bleed gradient wash behind content, a hint of brand-soft
      fading to white, not a wash. .section-soft reuses the same recipe
      elsewhere since it's already full-bleed and needs no pseudo-element. */
@@ -102,6 +107,7 @@
   body.page-public h1, body.page-public h2, body.page-public h3, body.page-public p{overflow-wrap:break-word}
   body.page-public h1, body.page-public h2, body.page-public h3{font-family:"Mona Sans",system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}
   body.page-public h1{margin:16px 0 0;font-size:clamp(32px,4.6vw,54px);font-weight:800;line-height:1.14;letter-spacing:-.035em;color:var(--ink)}
+  body.page-public .hero-highlight{color:var(--brand)}
   body.page-public .hero-copy{max-width:600px;margin:24px auto 0;color:var(--muted);font-size:19px;line-height:1.68;letter-spacing:-.012em}
   body.page-public .hero-actions{display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:16px;margin-top:36px}
   body.page-public .hero-actions .button{min-height:48px;padding:0 20px;font-size:14.5px}
@@ -203,7 +209,6 @@
   body.page-public .split-right .split-content{order:1}
   body.page-public .split-content .value-grid, body.page-public .split-content .journey-grid{grid-template-columns:1fr;gap:24px;margin-top:32px;margin-bottom:32px}
   body.page-public .split-content .credibility-tags{justify-content:flex-start;margin-left:0}
-  body.page-public .split-content .flow{margin-top:32px;margin-bottom:32px;max-width:none}
   @media(max-width:900px){
     body.page-public .split{grid-template-columns:1fr;gap:28px}
     body.page-public .split-right .split-media{order:1}
@@ -298,18 +303,9 @@
   body.page-public .item-label{display:block;margin-bottom:4px;font-size:11px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-2)}
   body.page-public .item-card h3{margin:0 0 8px;font-size:16px;font-weight:600;letter-spacing:-.015em}
   body.page-public .item-card p{margin:0;color:var(--muted);font-size:14px;line-height:1.6}
+  body.page-public .item-card img{width:80px;height:auto}
 
   /* how it works: numbered 1-2-3 steps, step 2 (human) visually emphasized */
-  body.page-public .flow{position:relative;max-width:640px;margin:48px auto 0}
-  body.page-public .flow::before{content:"";position:absolute;left:23px;top:28px;bottom:28px;width:2px;background:var(--line-soft)}
-  body.page-public .flow-fill{position:absolute;left:23px;top:28px;bottom:28px;width:2px;background:var(--brand);transform:scaleY(var(--flow-progress,0));transform-origin:top;transition:transform .1s linear}
-  @media(prefers-reduced-motion:reduce){body.page-public .flow-fill{transition:none}}
-  body.page-public .flow-step{position:relative;display:flex;align-items:center;gap:24px;padding-bottom:24px}
-  body.page-public .flow-step:last-child{padding-bottom:0}
-  body.page-public .flow-icon{position:relative;z-index:1;flex:none;width:48px;height:48px;border-radius:50%;background:#fff;border:2px solid var(--surface-2);color:var(--line-soft);display:grid;place-items:center;font-family:"IBM Plex Mono",monospace;font-size:16px;font-weight:600;transition:background .25s ease,border-color .25s ease,color .25s ease}
-  body.page-public .flow-icon.is-active{background-color:var(--brand-soft);border-color:var(--brand-soft);color:var(--brand)}
-  @media(prefers-reduced-motion:reduce){body.page-public .flow-icon{transition:none}}
-  body.page-public .flow-text h3{margin:0;font-size:17px;font-weight:600}
 
   /* what we look at: borderless icon grid, matches why-section language */
   body.page-public .journey-grid{position:relative;display:grid;grid-template-columns:repeat(4,1fr);gap:32px;max-width:var(--max);margin:44px auto 0}
